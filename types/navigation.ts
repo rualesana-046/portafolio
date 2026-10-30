@@ -13,3 +13,9 @@ export interface NavigationItem {
   readonly id: SectionId;
   readonly label: Localized;
 }
+
+export interface SectionHeadingContent {
+  readonly eyebrow: Localized;
+  readonly title: Localized;
+  readonly description?: Localized;
+}
