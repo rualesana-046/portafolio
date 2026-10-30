@@ -10,6 +10,7 @@
   --muted: 107 94 80;
   --accent: 155 122 47;
   --accent-strong: 118 92 34;
+  --metal-shade: 94 74 27;
   --glow: 155 122 47;
   color-scheme: light;
 }
@@ -22,6 +23,7 @@
   --muted: 156 168 159;
   --accent: 212 175 55;
   --accent-strong: 212 175 55;
+  --metal-shade: 166 139 60;
   --glow: 16 185 129;
   color-scheme: dark;
 }

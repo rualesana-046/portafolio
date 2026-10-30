@@ -41,7 +41,7 @@ export const ui = {
   mailBodyEmail: { es: "Correo", en: "Email" },
   mailBodyMessage: { es: "Mensaje", en: "Message" },
   socialLinks: { es: "Redes y contacto", en: "Social and contact links" },
-  copyright: { es: "Todos los derechos reservados.", en: "All rights reserved." },
+  copyrightSymbol: { es: "©", en: "©" },
   notFoundTitle: { es: "Página no encontrada", en: "Page not found" },
   notFoundBody: {
     es: "Este pasillo del castillo no lleva a ninguna parte.",

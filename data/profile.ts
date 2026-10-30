@@ -10,10 +10,10 @@ export const profile: Profile = {
     es: "Resumen de ejemplo. Aquí irá una presentación técnica breve centrada en frameworks y especialidades.",
     en: "Sample summary. A short technical introduction focused on frameworks and specialties will go here.",
   },
-  photo: "/images/profile.webp",
+  photo: "/images/placeholders/profile.svg",
   photoAlt: {
-    es: "Fotografía de ejemplo de Nombre de ejemplo",
-    en: "Sample photograph of Nombre de ejemplo",
+    es: "Marcador decorativo en lugar de la fotografía, pendiente de entrega",
+    en: "Decorative placeholder in place of the photograph, pending delivery",
   },
   cvPath: "/cv.pdf",
 };

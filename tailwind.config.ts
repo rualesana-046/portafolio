@@ -37,6 +37,7 @@ const config: Config = {
         muted: "rgb(var(--muted) / <alpha-value>)",
         accent: "rgb(var(--accent) / <alpha-value>)",
         "accent-strong": "rgb(var(--accent-strong) / <alpha-value>)",
+        "metal-shade": "rgb(var(--metal-shade) / <alpha-value>)",
         glow: "rgb(var(--glow) / <alpha-value>)",
       },
       fontFamily: {
@@ -50,6 +51,15 @@ const config: Config = {
       },
       backdropBlur: {
         glass: "14px",
+      },
+      keyframes: {
+        "ink-rise": {
+          "0%": { opacity: "0", transform: "translateY(14px)", filter: "blur(6px)" },
+          "100%": { opacity: "1", transform: "translateY(0)", filter: "blur(0)" },
+        },
+      },
+      animation: {
+        "ink-rise": "ink-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both",
       },
     },
   },

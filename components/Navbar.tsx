@@ -11,6 +11,7 @@ import { ui } from "@/data/ui";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { useLocalized } from "@/hooks/useLocalized";
 import { cn } from "@/lib/cn";
+import { getInitials } from "@/lib/text";
 import type { SectionId } from "@/types/navigation";
 
 const MOBILE_MENU_ID = "mobile-navigation";
@@ -94,9 +95,15 @@ export function Navbar() {
       >
         <a
           href="#hero"
-          className="focus-ring truncate rounded-md font-title text-base font-semibold tracking-wider text-accent-strong sm:text-lg"
+          className="focus-ring flex min-w-0 items-center rounded-full font-title font-semibold tracking-wider text-accent-strong sm:rounded-md"
         >
-          {profile.name}
+          <span
+            aria-hidden="true"
+            className="grid h-9 w-9 place-items-center rounded-full border border-accent/70 bg-surface/60 text-sm shadow-arcane sm:hidden"
+          >
+            {getInitials(profile.name)}
+          </span>
+          <span className="sr-only truncate sm:not-sr-only sm:text-lg">{profile.name}</span>
         </a>
         <NavigationLinks
           activeId={activeId}
