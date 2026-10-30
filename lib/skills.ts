@@ -1,4 +1,4 @@
-import type { Skill } from "@/types/skill";
+import type { Skill, SkillCategory } from "@/types/skill";
 
 export type SkillIndex = ReadonlyMap<string, Skill>;
 
@@ -21,4 +21,18 @@ export function resolveSkills(ids: readonly string[], index: SkillIndex): readon
     }
     return skill;
   });
+}
+
+export interface SkillGroup {
+  readonly category: SkillCategory;
+  readonly skills: readonly Skill[];
+}
+
+export function groupSkillsByCategory(
+  skills: readonly Skill[],
+  order: readonly SkillCategory[],
+): readonly SkillGroup[] {
+  return order
+    .map((category) => ({ category, skills: skills.filter((skill) => skill.category === category) }))
+    .filter((group) => group.skills.length > 0);
 }

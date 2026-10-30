@@ -1,3 +1,4 @@
+import type { Period } from "@/types/experience";
 import type { Locale, Localized } from "@/types/i18n";
 
 export const LOCALES = ["es", "en"] as const satisfies readonly Locale[];
@@ -32,6 +33,18 @@ export function formatMonth(value: string, locale: Locale): string {
     year: "numeric",
     timeZone: "UTC",
   }).format(date);
+}
+
+export interface FormattedPeriod {
+  readonly start: string;
+  readonly end: string;
+}
+
+export function formatPeriod(period: Period, locale: Locale, presentLabel: string): FormattedPeriod {
+  return {
+    start: formatMonth(period.start, locale),
+    end: period.end === null ? presentLabel : formatMonth(period.end, locale),
+  };
 }
 
 export function oppositeLocale(locale: Locale): Locale {

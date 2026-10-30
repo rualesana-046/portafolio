@@ -50,6 +50,7 @@ const config: Config = {
         "button-to": "rgb(var(--button-to) / <alpha-value>)",
         "on-button": "rgb(var(--on-button) / <alpha-value>)",
         "on-seal": "rgb(var(--on-seal) / <alpha-value>)",
+        "on-wax": "rgb(var(--on-wax) / <alpha-value>)",
         glow: "rgb(var(--glow) / <alpha-value>)",
       },
       fontFamily: {
