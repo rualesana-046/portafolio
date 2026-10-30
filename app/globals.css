@@ -3,28 +3,68 @@
 @tailwind utilities;
 
 :root {
-  --canvas: 245 239 235;
-  --surface: 250 247 242;
-  --line: 209 194 165;
-  --ink: 36 29 23;
-  --muted: 107 94 80;
-  --accent: 155 122 47;
-  --accent-strong: 118 92 34;
-  --metal-shade: 94 74 27;
-  --glow: 155 122 47;
+  --canvas: 237 233 216;
+  --canvas-light: 243 240 226;
+  --canvas-deep: 221 224 203;
+  --surface: 246 243 231;
+  --line: 201 188 152;
+  --ink: 11 43 38;
+  --muted: 58 86 78;
+  --accent: 138 111 62;
+  --accent-strong: 107 85 48;
+  --link: 30 92 80;
+  --patina: 47 127 112;
+  --copper: 154 85 48;
+  --glow: 138 111 62;
+  --button-from: 20 88 76;
+  --button-to: 10 58 50;
+  --on-button: 237 233 216;
+  --seal-from: 20 88 76;
+  --seal-to: 10 58 50;
+  --on-seal: 232 217 176;
+  --leaf-0: 78 61 30;
+  --leaf-1: 107 85 48;
+  --leaf-2: 138 111 62;
+  --leaf-emboss: 255 255 255 / 0.55;
+  --metal-0: 107 85 48;
+  --metal-1: 138 111 62;
+  --metal-2: 201 174 124;
+  --metal-3: 154 85 48;
+  --grain-opacity: 0.07;
+  --grain-blend: multiply;
   color-scheme: light;
 }
 
 .dark {
-  --canvas: 11 17 14;
-  --surface: 16 26 21;
-  --line: 166 139 60;
-  --ink: 232 226 208;
-  --muted: 156 168 159;
-  --accent: 212 175 55;
-  --accent-strong: 212 175 55;
-  --metal-shade: 166 139 60;
-  --glow: 16 185 129;
+  --canvas: 5 42 36;
+  --canvas-light: 20 88 76;
+  --canvas-deep: 3 28 24;
+  --surface: 10 58 50;
+  --line: 143 118 72;
+  --ink: 238 231 211;
+  --muted: 195 204 189;
+  --accent: 201 174 124;
+  --accent-strong: 220 197 150;
+  --link: 148 209 194;
+  --patina: 79 165 150;
+  --copper: 212 147 107;
+  --glow: 79 165 150;
+  --button-from: 232 217 176;
+  --button-to: 201 174 124;
+  --on-button: 3 28 24;
+  --seal-from: 232 217 176;
+  --seal-to: 184 157 108;
+  --on-seal: 3 28 24;
+  --leaf-0: 194 168 120;
+  --leaf-1: 201 174 124;
+  --leaf-2: 232 217 176;
+  --leaf-emboss: 0 0 0 / 0.55;
+  --metal-0: 143 118 72;
+  --metal-1: 201 174 124;
+  --metal-2: 232 217 176;
+  --metal-3: 181 112 74;
+  --grain-opacity: 0.09;
+  --grain-blend: soft-light;
   color-scheme: dark;
 }
 
@@ -36,16 +76,103 @@
   body {
     @apply bg-canvas font-body text-ink antialiased;
   }
+
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  body::before {
+    background:
+      radial-gradient(120% 80% at 15% 0%, rgb(var(--canvas-light)) 0%, transparent 60%),
+      radial-gradient(90% 70% at 100% 100%, rgb(var(--canvas-deep)) 0%, transparent 70%),
+      linear-gradient(160deg, rgb(var(--canvas-light)) 0%, rgb(var(--canvas)) 50%, rgb(var(--canvas-deep)) 100%);
+  }
+
+  body::after {
+    background-image: url("/textures/grain.svg");
+    opacity: var(--grain-opacity);
+    mix-blend-mode: var(--grain-blend);
+  }
 }
 
 @layer components {
   .focus-ring {
     @apply outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas;
   }
+
+  .text-leaf {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      100deg,
+      rgb(var(--leaf-0)) 0%,
+      rgb(var(--leaf-1)) 22%,
+      rgb(var(--leaf-2)) 40%,
+      rgb(var(--leaf-1)) 58%,
+      rgb(var(--leaf-0)) 78%,
+      rgb(var(--leaf-1)) 100%
+    );
+    background-size: 220% 100%;
+    background-position: 0% 50%;
+    filter: drop-shadow(0 1px 0 rgb(var(--leaf-emboss)));
+  }
+
+  .metal-frame {
+    @apply relative;
+  }
+
+  .metal-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    padding: 1px;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(
+      135deg,
+      rgb(var(--metal-0)),
+      rgb(var(--metal-1)) 25%,
+      rgb(var(--metal-2)) 45%,
+      rgb(var(--metal-1)) 62%,
+      rgb(var(--metal-3)) 80%,
+      rgb(var(--metal-0))
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+  }
+
+  .seal {
+    @apply grid place-items-center rounded-full font-monogram leading-none text-on-seal;
+    border: 2px solid transparent;
+    background:
+      radial-gradient(circle at 35% 30%, rgb(var(--seal-from)), rgb(var(--seal-to)) 75%) padding-box,
+      linear-gradient(135deg, rgb(var(--metal-2)), rgb(var(--metal-0)), rgb(var(--metal-3))) border-box;
+  }
+}
+
+@keyframes leaf-sheen {
+  to {
+    background-position: 100% 50%;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
+  }
+
+  .text-leaf {
+    animation: leaf-sheen 9s ease-in-out infinite alternate;
   }
 }

@@ -2,6 +2,7 @@ import type { Profile } from "@/types/profile";
 
 export const profile: Profile = {
   name: "Nombre de ejemplo",
+  monogram: "AM",
   headline: {
     es: "Titular de ejemplo: desarrollo full stack con Next.js, NestJS y Spring Boot",
     en: "Sample headline: full stack development with Next.js, NestJS and Spring Boot",

@@ -21,14 +21,14 @@ export function Hero() {
     >
       <div className="mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-[1.25fr_1fr] lg:gap-16">
         <div className="order-2 text-center md:order-1 md:text-left">
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent-strong motion-safe:animate-ink-rise">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-accent-strong motion-safe:animate-ink-rise">
             {t(sections.hero.title)}
           </p>
           <h1
             id={HEADING_ID}
-            className="mt-4 font-title text-4xl font-semibold leading-tight tracking-wide text-ink motion-safe:animate-ink-rise motion-safe:[animation-delay:120ms] sm:text-5xl lg:text-6xl"
+            className="mt-4 font-title text-5xl font-semibold leading-tight tracking-wide motion-safe:animate-ink-rise motion-safe:[animation-delay:120ms] sm:text-6xl lg:text-7xl"
           >
-            {profile.name}
+            <span className="text-leaf">{profile.name}</span>
           </h1>
           <p className="mt-5 text-lg text-ink motion-safe:animate-ink-rise motion-safe:[animation-delay:240ms] sm:text-xl">
             {t(profile.headline)}
@@ -41,7 +41,7 @@ export function Hero() {
               href={profile.cvPath}
               target="_blank"
               rel="noopener noreferrer"
-              className="focus-ring inline-flex items-center gap-3 rounded-full border border-accent/70 bg-gradient-to-b from-accent-strong to-metal-shade px-7 py-3 font-title text-sm font-semibold uppercase tracking-[0.18em] text-canvas shadow-[inset_0_1px_0_rgb(255_255_255/0.28),0_10px_24px_-12px_rgb(var(--glow)/0.7)] transition hover:shadow-arcane motion-safe:hover:-translate-y-0.5"
+              className="focus-ring inline-flex items-center gap-3 rounded-full border border-accent/70 bg-gradient-to-b from-button-from to-button-to px-7 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-on-button shadow-[inset_0_1px_0_rgb(255_255_255/0.28),0_10px_24px_-12px_rgb(var(--glow)/0.7)] transition hover:shadow-arcane motion-safe:hover:-translate-y-0.5"
             >
               <ScrollText aria-hidden="true" className="h-4 w-4" />
               {t(ui.downloadCv)}

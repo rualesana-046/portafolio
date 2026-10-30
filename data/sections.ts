@@ -7,10 +7,10 @@ export const sections: Record<SectionId, SectionHeadingContent> = {
   },
   about: {
     eyebrow: { es: "Sobre mí", en: "About me" },
-    title: { es: "Sobre mí", en: "About me" },
+    title: { es: "Cuaderno de Campo", en: "Field Notebook" },
     description: {
-      es: "Lo que soy más allá del código.",
-      en: "Who I am beyond the code.",
+      es: "Lo que observo, anoto y me apasiona lejos del teclado.",
+      en: "What I observe, jot down and love away from the keyboard.",
     },
   },
   projects: {

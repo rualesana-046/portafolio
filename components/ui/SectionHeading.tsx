@@ -32,12 +32,12 @@ export function SectionHeading({ content, headingId }: SectionHeadingProps) {
 
   return (
     <header className="mx-auto mb-12 max-w-2xl text-center">
-      <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent-strong">
+      <p className="text-sm font-semibold uppercase tracking-[0.3em] text-accent-strong">
         {t(content.eyebrow)}
       </p>
       <h2
         id={headingId}
-        className="mt-3 font-title text-3xl font-semibold tracking-wide text-ink sm:text-4xl"
+        className="text-leaf mt-3 font-title text-4xl font-semibold tracking-wide sm:text-5xl"
       >
         {t(content.title)}
       </h2>

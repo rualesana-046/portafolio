@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Cinzel, Inter, JetBrains_Mono } from "next/font/google";
+import { Grenze_Gotisch, Newsreader, UnifrakturCook } from "next/font/google";
 import { siteMetadata } from "@/data/site";
 import { cn } from "@/lib/cn";
 import { DEFAULT_LOCALE, localeInitScript } from "@/lib/i18n";
@@ -10,11 +10,22 @@ import { MotionProvider } from "@/providers/MotionProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import "./globals.css";
 
-const cinzel = Cinzel({ subsets: ["latin"], variable: "--font-cinzel", display: "swap" });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const jetbrainsMono = JetBrains_Mono({
+const grenze = Grenze_Gotisch({
   subsets: ["latin"],
-  variable: "--font-jetbrains",
+  weight: ["600", "700"],
+  variable: "--font-grenze",
+  display: "swap",
+});
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  variable: "--font-newsreader",
+  display: "swap",
+});
+const unifraktur = UnifrakturCook({
+  subsets: ["latin"],
+  weight: "700",
+  variable: "--font-unifraktur",
   display: "swap",
 });
 
@@ -30,7 +41,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang={DEFAULT_LOCALE}
-      className={cn(cinzel.variable, inter.variable, jetbrainsMono.variable)}
+      className={cn(grenze.variable, newsreader.variable, unifraktur.variable)}
       suppressHydrationWarning
     >
       <head>

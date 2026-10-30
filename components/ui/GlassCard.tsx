@@ -61,10 +61,10 @@ export function GlassCard({
   return (
     <Element
       className={cn(
-        "rounded-2xl border border-line/60 bg-surface/70 shadow-parchment backdrop-blur-glass dark:border-line/40 dark:shadow-arcane",
+        "metal-frame rounded-2xl bg-surface/70 shadow-parchment backdrop-blur-glass dark:shadow-arcane",
         interactive &&
-          "transition duration-300 ease-out hover:border-accent/70 motion-safe:hover:-translate-y-1.5",
-        hasParchment && "relative isolate overflow-hidden",
+          "transition duration-300 ease-out hover:shadow-arcane motion-safe:hover:-translate-y-1.5",
+        hasParchment && "isolate overflow-hidden",
         className,
       )}
     >
