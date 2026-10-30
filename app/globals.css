@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --canvas: 245 239 235;
+  --surface: 250 247 242;
+  --line: 209 194 165;
+  --ink: 36 29 23;
+  --muted: 107 94 80;
+  --accent: 155 122 47;
+  --accent-strong: 118 92 34;
+  --glow: 155 122 47;
+  color-scheme: light;
+}
+
+.dark {
+  --canvas: 11 17 14;
+  --surface: 16 26 21;
+  --line: 166 139 60;
+  --ink: 232 226 208;
+  --muted: 156 168 159;
+  --accent: 212 175 55;
+  --accent-strong: 212 175 55;
+  --glow: 16 185 129;
+  color-scheme: dark;
+}
+
+@layer base {
+  body {
+    @apply bg-canvas font-body text-ink antialiased;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
