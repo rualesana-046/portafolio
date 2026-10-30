@@ -6,6 +6,7 @@ import { cn } from "@/lib/cn";
 import { DEFAULT_LOCALE, localeInitScript } from "@/lib/i18n";
 import { themeInitScript } from "@/lib/theme";
 import { LocaleProvider } from "@/providers/LocaleProvider";
+import { MotionProvider } from "@/providers/MotionProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import "./globals.css";
 
@@ -37,7 +38,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
       </head>
       <body>
         <ThemeProvider>
-          <LocaleProvider documentTitle={siteMetadata.title}>{children}</LocaleProvider>
+          <LocaleProvider documentTitle={siteMetadata.title}>
+            <MotionProvider>{children}</MotionProvider>
+          </LocaleProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -33,3 +33,7 @@ export function formatMonth(value: string, locale: Locale): string {
     timeZone: "UTC",
   }).format(date);
 }
+
+export function oppositeLocale(locale: Locale): Locale {
+  return locale === "es" ? "en" : "es";
+}

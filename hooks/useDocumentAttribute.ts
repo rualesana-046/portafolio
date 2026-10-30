@@ -9,6 +9,14 @@ function subscribeToNothing(): () => void {
   return () => undefined;
 }
 
+export function useIsHydrated(): boolean {
+  return useSyncExternalStore(
+    subscribeToNothing,
+    () => true,
+    () => false,
+  );
+}
+
 export function useDocumentAttribute<T>(
   attribute: string,
   readValue: (root: HTMLElement) => T,
@@ -32,11 +40,7 @@ export function useDocumentAttribute<T>(
     () => serverValue,
   );
 
-  const isHydrated = useSyncExternalStore(
-    subscribeToNothing,
-    () => true,
-    () => false,
-  );
+  const isHydrated = useIsHydrated();
 
   return { value, isHydrated };
 }
