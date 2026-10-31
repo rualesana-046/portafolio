@@ -94,13 +94,13 @@ export function Contact() {
     <Section id="contact" heading={sections.contact}>
       <Reveal className="mx-auto max-w-3xl">
         <BurntLetter>
-          <div className="flex flex-col gap-5 sm:block sm:space-y-5">
+          <div className="space-y-5">
             <h3 id={TITLE_ID} className="font-title text-3xl font-semibold sm:text-4xl">
               {t(contact.title)}
             </h3>
             <LazyIllustration
               illustration={illustrations.perchedOwl}
-              className="order-last mx-auto mt-4 w-[150px] sm:order-none sm:float-right sm:mb-3 sm:ml-8 sm:mr-0 sm:mt-0 sm:w-40"
+              className="hidden sm:float-right sm:mb-3 sm:ml-8 sm:block sm:w-40"
             />
             <p className="text-lg italic">{t(contact.greeting)}</p>
             <p className="text-base leading-relaxed sm:text-lg">{t(contact.body)}</p>
