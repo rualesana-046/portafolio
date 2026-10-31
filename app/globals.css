@@ -43,9 +43,11 @@
   --letter-paper: 239 230 207;
   --letter-paper-deep: 231 219 190;
   --letter-ink: 11 43 38;
-  --letter-muted: 58 86 78;
+  --letter-muted: 52 78 70;
   --letter-char: 43 29 18;
   --letter-toast: 154 107 53;
+  --letter-line: 118 94 52;
+  --letter-danger: 140 36 36;
   --letter-burn: 5px;
   --letter-shade-blur: 22px;
   --letter-shade-alpha: 0.26;
@@ -146,6 +148,10 @@
 
   .focus-ring {
     @apply outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas;
+  }
+
+  .focus-ring-letter {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-letter-ink focus-visible:ring-offset-2 focus-visible:ring-offset-letter-paper;
   }
 
   .text-leaf {

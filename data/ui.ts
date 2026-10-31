@@ -36,9 +36,20 @@ export const ui = {
   technicalExperience: { es: "Experiencia técnica y laboral", en: "Technical and work experience" },
   languages: { es: "Idiomas", en: "Languages" },
   viewCredential: { es: "Ver credencial", en: "View credential" },
-  sendLetter: { es: "Sellar y enviar", en: "Seal and send" },
+  sendLetter: { es: "Sellar y abrir en mi correo", en: "Seal and open in my email" },
   copyMessage: { es: "Copiar mensaje", en: "Copy message" },
   characters: { es: "caracteres", en: "characters" },
+  upTo: { es: "Hasta", en: "Up to" },
+  between: { es: "Entre", en: "Between" },
+  and: { es: "y", en: "and" },
+  allFieldsRequired: { es: "Todos los campos son obligatorios.", en: "All fields are required." },
+  formHasErrors: {
+    es: "Revisa los campos marcados antes de sellar la carta.",
+    en: "Check the highlighted fields before sealing the letter.",
+  },
+  mailTo: { es: "Para", en: "To" },
+  mailSubject: { es: "Asunto", en: "Subject" },
+  contactElsewhere: { es: "También puedes encontrarme en", en: "You can also find me on" },
   mailSubjectPrefix: { es: "Portafolio", en: "Portfolio" },
   mailBodyName: { es: "Nombre", en: "Name" },
   mailBodyEmail: { es: "Correo", en: "Email" },
@@ -59,11 +70,13 @@ export const validationMessages = {
     es: "Escribe un nombre válido: solo letras, espacios, guiones y apóstrofes.",
     en: "Enter a valid name: letters, spaces, hyphens and apostrophes only.",
   },
+  nameTooLong: { es: "El nombre es demasiado largo.", en: "The name is too long." },
   invalidEmail: {
     es: "Escribe un correo válido, por ejemplo nombre@dominio.com.",
     en: "Enter a valid email, for example name@domain.com.",
   },
   subjectTooShort: { es: "El asunto es demasiado corto.", en: "The subject is too short." },
+  subjectTooLong: { es: "El asunto es demasiado largo.", en: "The subject is too long." },
   messageTooShort: { es: "El mensaje es demasiado corto.", en: "The message is too short." },
   messageTooLong: {
     es: "El mensaje supera el límite de caracteres.",
@@ -74,8 +87,8 @@ export const validationMessages = {
 export const formStatusMessages = {
   stamping: { es: "Sellando tu carta…", en: "Sealing your letter…" },
   opened: {
-    es: "Se abrió tu aplicación de correo con la carta lista. Falta que pulses Enviar allí.",
-    en: "Your email app opened with the letter ready. You still need to press Send there.",
+    es: "Tu aplicación de correo debería abrirse con la carta lista. Falta que pulses Enviar allí. Si no se abrió, usa Copiar mensaje.",
+    en: "Your email app should open with the letter ready. You still need to press Send there. If it didn't open, use Copy message.",
   },
   copied: {
     es: "Mensaje copiado al portapapeles.",

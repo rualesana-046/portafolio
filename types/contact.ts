@@ -15,8 +15,10 @@ export type ContactFormValues = Record<ContactFieldName, string>;
 export type ValidationErrorCode =
   | "required"
   | "invalidName"
+  | "nameTooLong"
   | "invalidEmail"
   | "subjectTooShort"
+  | "subjectTooLong"
   | "messageTooShort"
   | "messageTooLong";
 
@@ -35,4 +37,18 @@ export interface ContactContent {
   readonly body: Localized;
   readonly signature: Localized;
   readonly fields: Record<ContactFieldName, ContactFieldContent>;
+}
+
+export interface LetterLabels {
+  readonly subjectPrefix: string;
+  readonly name: string;
+  readonly email: string;
+  readonly message: string;
+  readonly to: string;
+  readonly subject: string;
+}
+
+export interface ComposedLetter {
+  readonly subject: string;
+  readonly body: string;
 }

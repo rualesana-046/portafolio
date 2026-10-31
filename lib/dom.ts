@@ -14,3 +14,10 @@ export function writeStorage(key: string, value: string): boolean {
     return false;
   }
 }
+
+export function openUrl(url: string): void {
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.rel = "noopener";
+  anchor.click();
+}
