@@ -1,8 +1,9 @@
 "use client";
 
-import { m, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useScroll } from "framer-motion";
 import { Award, Briefcase, GraduationCap, type LucideIcon } from "lucide-react";
 import { useRef, type ReactNode } from "react";
+import { FootprintTrail } from "@/components/ui/FootprintTrail";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
@@ -43,9 +44,7 @@ interface TimelineProps {
 function Timeline({ title, icon: Icon, children, footer }: TimelineProps) {
   const t = useLocalized();
   const trackRef = useRef<HTMLDivElement>(null);
-  const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: trackRef, offset: ["start 0.85", "end 0.55"] });
-  const inkScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
     <div>
@@ -54,12 +53,10 @@ function Timeline({ title, icon: Icon, children, footer }: TimelineProps) {
         {t(title)}
       </h3>
       <div ref={trackRef} className="relative pl-10">
-        <span aria-hidden="true" className="absolute bottom-3 left-[11px] top-3 w-px bg-line/70" />
-        <m.span
-          aria-hidden="true"
-          data-timeline-ink
-          style={{ scaleY: shouldReduceMotion ? 1 : inkScale }}
-          className="absolute bottom-3 left-[10px] top-3 w-[3px] origin-top rounded-full bg-gradient-to-b from-accent to-glow"
+        <FootprintTrail
+          progress={scrollYProgress}
+          markerSelector="[data-timeline-marker]"
+          className="absolute inset-y-0 left-0 w-6 text-accent-strong"
         />
         <ol className="space-y-8">{children}</ol>
       </div>
@@ -73,6 +70,7 @@ function TimelineItem({ index, children }: { readonly index: number; readonly ch
     <li className="relative">
       <span
         aria-hidden="true"
+        data-timeline-marker
         className="absolute -left-10 top-6 h-[23px] w-[23px] rounded-full border-2 border-accent bg-canvas shadow-arcane"
       />
       <Reveal delay={index * 0.08}>

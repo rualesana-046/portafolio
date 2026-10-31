@@ -33,6 +33,10 @@
   --metal-1: 138 111 62;
   --metal-2: 201 174 124;
   --metal-3: 154 85 48;
+  --tree-far: 168 182 160;
+  --tree-mid: 120 142 120;
+  --tree-near: 58 86 78;
+  --mist: 243 240 226;
   --grain-opacity: 0.07;
   --grain-blend: multiply;
   color-scheme: light;
@@ -69,6 +73,10 @@
   --metal-1: 201 174 124;
   --metal-2: 232 217 176;
   --metal-3: 181 112 74;
+  --tree-far: 16 74 63;
+  --tree-mid: 9 52 44;
+  --tree-near: 2 22 19;
+  --mist: 160 196 180;
   --grain-opacity: 0.09;
   --grain-blend: soft-light;
   color-scheme: dark;
@@ -186,6 +194,15 @@
   }
 }
 
+@keyframes mist-drift {
+  from {
+    transform: translate3d(-3%, 0, 0);
+  }
+  to {
+    transform: translate3d(3%, 0, 0);
+  }
+}
+
 @keyframes leaf-sheen {
   to {
     background-position: 100% 50%;
@@ -199,5 +216,18 @@
 
   .text-leaf {
     animation: leaf-sheen 9s ease-in-out infinite alternate;
+  }
+
+  .mist-band {
+    animation: mist-drift 26s ease-in-out infinite alternate;
+  }
+
+  .mist-band-slow {
+    animation: mist-drift 40s ease-in-out infinite alternate-reverse;
+  }
+
+  [data-offscreen] .mist-band,
+  [data-offscreen] .mist-band-slow {
+    animation-play-state: paused;
   }
 }

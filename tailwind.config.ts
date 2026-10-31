@@ -51,6 +51,10 @@ const config: Config = {
         "on-button": "rgb(var(--on-button) / <alpha-value>)",
         "on-seal": "rgb(var(--on-seal) / <alpha-value>)",
         "on-wax": "rgb(var(--on-wax) / <alpha-value>)",
+        "tree-far": "rgb(var(--tree-far) / <alpha-value>)",
+        "tree-mid": "rgb(var(--tree-mid) / <alpha-value>)",
+        "tree-near": "rgb(var(--tree-near) / <alpha-value>)",
+        mist: "rgb(var(--mist) / <alpha-value>)",
         glow: "rgb(var(--glow) / <alpha-value>)",
       },
       fontFamily: {

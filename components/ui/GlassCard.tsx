@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { CornerOrnament } from "@/components/ui/CornerOrnament";
 import { cn } from "@/lib/cn";
 
 type GlassCardElement = "div" | "article" | "li" | "figure";
@@ -12,11 +13,11 @@ interface GlassCardProps {
   readonly children: ReactNode;
 }
 
-const cornerPositions = [
-  "left-4 top-4",
-  "right-4 top-4 rotate-90",
-  "bottom-4 right-4 rotate-180",
-  "bottom-4 left-4 -rotate-90",
+const cornerPlacements = [
+  "left-2 top-2",
+  "right-2 top-2 -scale-x-100",
+  "bottom-2 left-2 -scale-y-100",
+  "bottom-2 right-2 -scale-100",
 ] as const;
 
 function ParchmentDecoration() {
@@ -26,24 +27,11 @@ function ParchmentDecoration() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[url('/textures/parchment.svg')] opacity-60 mix-blend-multiply dark:opacity-10 dark:mix-blend-screen"
       />
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-3 hidden rounded-xl border border-accent/25 dark:block"
-      />
-      {cornerPositions.map((position) => (
-        <svg
-          key={position}
-          aria-hidden="true"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.25"
-          className={cn("pointer-events-none absolute hidden h-6 w-6 text-accent/70 dark:block", position)}
-        >
-          <path d="M1 12V1h11" />
-          <path d="M5 8V5h3" />
-          <circle cx="1" cy="1" r="1" fill="currentColor" />
-        </svg>
+      {cornerPlacements.map((placement) => (
+        <CornerOrnament
+          key={placement}
+          className={cn("pointer-events-none absolute h-10 w-10 text-accent sm:h-14 sm:w-14", placement)}
+        />
       ))}
     </>
   );

@@ -44,7 +44,7 @@ export function About() {
       <Reveal>
         <GlassCard
           decoration="parchment"
-          className={cn("mx-auto p-8 sm:p-12", hasSingleImage ? "max-w-5xl" : "max-w-3xl")}
+          className={cn("mx-auto px-8 py-12 sm:p-16", hasSingleImage ? "max-w-5xl" : "max-w-3xl")}
         >
           <div className={cn(hasSingleImage && "grid items-center gap-10 md:grid-cols-[1.4fr_1fr]")}>
             <div className="space-y-5 text-lg leading-relaxed text-ink">

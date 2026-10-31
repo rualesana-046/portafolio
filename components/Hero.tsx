@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { ScrollText } from "lucide-react";
+import { ForestSilhouette } from "@/components/ui/ForestSilhouette";
 import { profile } from "@/data/profile";
 import { sections } from "@/data/sections";
 import { ui } from "@/data/ui";
@@ -17,9 +18,10 @@ export function Hero() {
     <section
       id="hero"
       aria-labelledby={HEADING_ID}
-      className="flex min-h-[100svh] items-center px-4 pb-20 pt-28 sm:px-6 lg:pt-32"
+      className="relative flex min-h-[100svh] items-center overflow-hidden px-4 pb-44 pt-28 sm:px-6 sm:pb-60 lg:pt-32"
     >
-      <div className="mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-[1.25fr_1fr] lg:gap-16">
+      <ForestSilhouette className="absolute inset-x-0 bottom-0 h-40 sm:h-56" />
+      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-[1.25fr_1fr] lg:gap-16">
         <div className="order-2 text-center md:order-1 md:text-left">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-accent-strong motion-safe:animate-ink-rise">
             {t(sections.hero.title)}
