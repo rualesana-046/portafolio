@@ -47,8 +47,8 @@ export const ui = {
   copyrightSymbol: { es: "©", en: "©" },
   notFoundTitle: { es: "Página no encontrada", en: "Page not found" },
   notFoundBody: {
-    es: "Este pasillo del castillo no lleva a ninguna parte.",
-    en: "This castle corridor leads nowhere.",
+    es: "Este sendero del bosque no lleva a ninguna parte.",
+    en: "This forest path leads nowhere.",
   },
   backHome: { es: "Volver al inicio", en: "Back to home" },
 } as const satisfies Record<string, Localized>;

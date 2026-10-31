@@ -17,8 +17,8 @@ export const sections: Record<SectionId, SectionHeadingContent> = {
     eyebrow: { es: "Proyectos", en: "Projects" },
     title: { es: "El Scriptorium", en: "The Scriptorium" },
     description: {
-      es: "Recuerdos de software: escritorio, móvil, smartwatch, videojuego y proyectos personales.",
-      en: "Software memories: desktop, mobile, smartwatch, game and personal projects.",
+      es: "Donde se escribe y se construye software: proyectos de escritorio, móvil, smartwatch, videojuego y personales.",
+      en: "Where software is written and built: desktop, mobile, smartwatch, game and personal projects.",
     },
   },
   testimonials: {
