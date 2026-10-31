@@ -56,6 +56,10 @@ const config: Config = {
         "tree-near": "rgb(var(--tree-near) / <alpha-value>)",
         mist: "rgb(var(--mist) / <alpha-value>)",
         glow: "rgb(var(--glow) / <alpha-value>)",
+        "letter-ink": "rgb(var(--letter-ink) / <alpha-value>)",
+        "letter-muted": "rgb(var(--letter-muted) / <alpha-value>)",
+        "letter-char": "rgb(var(--letter-char) / <alpha-value>)",
+        "letter-toast": "rgb(var(--letter-toast) / <alpha-value>)",
       },
       fontFamily: {
         title: ["var(--font-grenze)", ...fontFamily.serif],

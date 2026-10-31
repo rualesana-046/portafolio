@@ -1,14 +1,9 @@
-import type { CSSProperties } from "react";
 import { cn } from "@/lib/cn";
+import { maskImageStyle } from "@/lib/mask";
 
 interface TechLogoProps {
   readonly src: string;
   readonly className?: string;
-}
-
-function maskStyle(src: string): CSSProperties {
-  const image = `url("${src}")`;
-  return { maskImage: image, WebkitMaskImage: image };
 }
 
 export function TechLogo({ src, className }: TechLogoProps) {
@@ -19,7 +14,7 @@ export function TechLogo({ src, className }: TechLogoProps) {
         "inline-block shrink-0 [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain]",
         className,
       )}
-      style={maskStyle(src)}
+      style={maskImageStyle(src)}
     />
   );
 }
