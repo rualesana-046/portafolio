@@ -15,7 +15,7 @@ export const sections: Record<SectionId, SectionHeadingContent> = {
   },
   projects: {
     eyebrow: { es: "Proyectos", en: "Projects" },
-    title: { es: "El Pensadero Digital", en: "The Digital Pensieve" },
+    title: { es: "El Scriptorium", en: "The Scriptorium" },
     description: {
       es: "Recuerdos de software: escritorio, móvil, smartwatch, videojuego y proyectos personales.",
       en: "Software memories: desktop, mobile, smartwatch, game and personal projects.",
@@ -39,15 +39,15 @@ export const sections: Record<SectionId, SectionHeadingContent> = {
   },
   contact: {
     eyebrow: { es: "Contacto", en: "Contact" },
-    title: { es: "El Despacho de Lechuzas", en: "The Owl Post Office" },
+    title: { es: "Carta Sellada", en: "Sealed Letter" },
     description: {
-      es: "Escríbeme una carta y la lechuza hará el resto.",
-      en: "Write me a letter and the owl will do the rest.",
+      es: "Sella la carta y se abrirá tu correo con ella lista.",
+      en: "Seal the letter and your email will open with it ready.",
     },
   },
   skills: {
     eyebrow: { es: "Habilidades", en: "Skills" },
-    title: { es: "La Sala de Menesteres", en: "The Room of Requirement" },
+    title: { es: "Herbario de Herramientas", en: "Herbarium of Tools" },
     description: {
       es: "Las herramientas con las que construyo y lo que me inspira.",
       en: "The tools I build with and what inspires me.",

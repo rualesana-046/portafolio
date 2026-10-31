@@ -11,7 +11,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        nox: {
+        dark: {
           base: "#052A24",
           deep: "#031C18",
           surface: "#0A3A32",
@@ -24,7 +24,7 @@ const config: Config = {
           text: "#EEE7D3",
           muted: "#C3CCBD",
         },
-        lumos: {
+        light: {
           base: "#EDE9D8",
           light: "#F3F0E2",
           sage: "#DDE0CB",

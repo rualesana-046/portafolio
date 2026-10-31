@@ -22,14 +22,14 @@ export function ThemeToggle() {
         className="inline-flex items-center gap-1.5 rounded-full bg-button-to px-2.5 py-1 text-on-button transition-colors dark:bg-transparent dark:text-muted"
       >
         <Sun className="h-3.5 w-3.5" />
-        <span className="hidden sm:inline">{t(ui.lumos)}</span>
+        <span className="hidden sm:inline">{t(ui.themeLight)}</span>
       </span>
       <span
         aria-hidden="true"
         className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-muted transition-colors dark:bg-button-to dark:text-on-button"
       >
         <MoonStar className="h-3.5 w-3.5" />
-        <span className="hidden sm:inline">{t(ui.nox)}</span>
+        <span className="hidden sm:inline">{t(ui.themeDark)}</span>
       </span>
     </button>
   );
