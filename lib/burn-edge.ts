@@ -15,6 +15,8 @@ type Side = "top" | "right" | "bottom" | "left";
 const SIDES: readonly Side[] = ["top", "right", "bottom", "left"];
 const WAVE_FREQUENCIES = [1, 2.3, 5.1] as const;
 const DEPTH = "var(--letter-burn)";
+const CORNER_ZONE = 0.2;
+const CORNER_DEPTH = 1.15;
 
 function seededRandom(seed: number): () => number {
   let state = seed >>> 0;
@@ -39,17 +41,33 @@ function inverseDepth(factor: number): string {
   return `calc(100% - ${DEPTH}*${round(factor)})`;
 }
 
-function edgePoint(side: Side, along: number, factor: number): string {
-  const percent = round(along * 100);
+function travel(along: number, startCorner: number, endCorner: number): string {
+  if (along < CORNER_ZONE) {
+    const t = along / CORNER_ZONE;
+    return `${DEPTH}*${round(startCorner * (1 - t))} + ${round(CORNER_ZONE * 100 * t)}%`;
+  }
+  if (along > 1 - CORNER_ZONE) {
+    const t = (1 - along) / CORNER_ZONE;
+    return `100% - ${DEPTH}*${round(endCorner * (1 - t))} - ${round(CORNER_ZONE * 100 * t)}%`;
+  }
+  return `${round(along * 100)}%`;
+}
+
+function alongPosition(along: number, startCorner: number, endCorner: number, reversed: boolean): string {
+  const expression = travel(along, startCorner, endCorner);
+  return reversed ? `calc(100% - (${expression}))` : `calc(${expression})`;
+}
+
+function edgePoint(side: Side, along: number, factor: number, startCorner: number, endCorner: number): string {
   switch (side) {
     case "top":
-      return `${percent}% ${depth(factor)}`;
+      return `${alongPosition(along, startCorner, endCorner, false)} ${depth(factor)}`;
     case "right":
-      return `${inverseDepth(factor)} ${percent}%`;
+      return `${inverseDepth(factor)} ${alongPosition(along, startCorner, endCorner, false)}`;
     case "bottom":
-      return `${round(100 - percent)}% ${inverseDepth(factor)}`;
+      return `${alongPosition(along, startCorner, endCorner, true)} ${inverseDepth(factor)}`;
     case "left":
-      return `${depth(factor)} ${round(100 - percent)}%`;
+      return `${depth(factor)} ${alongPosition(along, startCorner, endCorner, true)}`;
   }
 }
 
@@ -85,12 +103,19 @@ function baseFactors({ seed, pointsPerSide, cornerBurn }: BurnShape): number[][]
 
 export function burnEdgePolygon(shape: BurnShape, { inset, roughness, layerSeed }: BurnLayer): string {
   const random = seededRandom(shape.seed * 31 + layerSeed);
-  const points = baseFactors(shape).flatMap((factors, sideIndex) => {
+  const layered = baseFactors(shape).map((factors) =>
+    factors.map((factor) => Math.max(0, factor + inset + (random() - 0.5) * roughness)),
+  );
+  const corners = layered.map((factors) => (factors[0] ?? 0) * CORNER_DEPTH);
+  const points = layered.flatMap((factors, sideIndex) => {
     const side = SIDES[sideIndex] ?? "top";
-    return factors.map((factor, index) => {
-      const layered = Math.max(0, factor + inset + (random() - 0.5) * roughness);
-      return index === 0 ? cornerPoint(side, layered * 0.75) : edgePoint(side, index / shape.pointsPerSide, layered);
-    });
+    const startCorner = corners[sideIndex] ?? 0;
+    const endCorner = corners[(sideIndex + 1) % SIDES.length] ?? 0;
+    return factors.map((factor, index) =>
+      index === 0
+        ? cornerPoint(side, startCorner)
+        : edgePoint(side, index / shape.pointsPerSide, factor, startCorner, endCorner),
+    );
   });
   return `polygon(${points.join(", ")})`;
 }
