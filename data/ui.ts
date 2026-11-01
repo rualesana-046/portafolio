@@ -1,6 +1,5 @@
 import type { ContactFormStatus, SocialPlatform, ValidationErrorCode } from "@/types/contact";
 import type { Localized } from "@/types/i18n";
-import type { InterestKind } from "@/types/interest";
 import type { ProjectKind } from "@/types/project";
 import type { SkillCategory } from "@/types/skill";
 import type { TestimonialContext } from "@/types/testimonial";
@@ -22,12 +21,17 @@ export const ui = {
   downloadProject: { es: "Descargar", en: "Download" },
   technologies: { es: "Tecnologías", en: "Technologies" },
   filterAll: { es: "Todos", en: "All" },
-  filterInterests: { es: "Filtrar intereses por tipo", en: "Filter interests by type" },
   filterProjects: { es: "Filtrar proyectos por tipo", en: "Filter projects by type" },
   visibleItems: { es: "Elementos visibles", en: "Visible items" },
   projectLinks: { es: "Enlaces del proyecto", en: "Project links" },
-  techStack: { es: "Mi stack", en: "My stack" },
-  interests: { es: "Intereses complementarios", en: "Complementary interests" },
+  folderTools: { es: "Herramientas", en: "Tools" },
+  folderReadings: { es: "Lecturas", en: "Readings" },
+  folderHobbies: { es: "Pasatiempos", en: "Pastimes" },
+  folderCreations: { es: "Creaciones", en: "Creations" },
+  stampTools: { es: "Oficio", en: "Craft" },
+  stampReadings: { es: "Lectura", en: "Reading" },
+  stampHobbies: { es: "Ocio", en: "Leisure" },
+  stampCreations: { es: "Taller", en: "Workshop" },
   previousTestimonial: { es: "Testimonio anterior", en: "Previous testimonial" },
   nextTestimonial: { es: "Testimonio siguiente", en: "Next testimonial" },
   present: { es: "Presente", en: "Present" },
@@ -111,18 +115,12 @@ export const projectKindLabels = {
   personal: { es: "Personal", en: "Personal" },
 } as const satisfies Record<ProjectKind, Localized>;
 
-export const interestKindLabels = {
-  book: { es: "Libros", en: "Books" },
-  hobby: { es: "Hobbies", en: "Hobbies" },
-  creative: { es: "Creatividad", en: "Creative" },
-} as const satisfies Record<InterestKind, Localized>;
-
 export const skillCategoryLabels = {
   language: { es: "Lenguajes", en: "Languages" },
   framework: { es: "Frameworks y librerías", en: "Frameworks and libraries" },
   database: { es: "Bases de datos", en: "Databases" },
   platform: { es: "Entornos y plataformas", en: "Runtimes and platforms" },
-  tool: { es: "Herramientas", en: "Tools" },
+  tool: { es: "Flujo de trabajo", en: "Workflow" },
 } as const satisfies Record<SkillCategory, Localized>;
 
 export const testimonialContextLabels = {

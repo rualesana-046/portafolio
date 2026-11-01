@@ -523,6 +523,418 @@ html:not(.js) .envelope-letter {
   }
 }
 
+.cabinet {
+  --tab-h: 32px;
+  --tab-w: 6.75rem;
+  --tab-font: 0.9rem;
+  --tab-pad: 12px;
+  --edge-peek: 7px;
+  --stamp-w: 64px;
+  --stamp-h: 76px;
+  --stamp-font: 0.56rem;
+  --stamp-track: 0.1em;
+  --stamp-frame: 5px;
+  --stamp-air: 6px;
+  --stamp-outer-w: calc(var(--stamp-w) + 12px);
+  --stamp-outer-h: calc(var(--stamp-h) + 12px);
+  --stamp-inset: 16px;
+  --sheet-pad-x: clamp(16px, 4vw, 32px);
+  --stamp-reserve: calc(var(--stamp-inset) + var(--stamp-outer-w) + 18px - var(--sheet-pad-x));
+  --face-h: 90px;
+  --folder-speed: 340ms;
+  position: relative;
+  max-width: 56rem;
+  margin-inline: auto;
+  padding-bottom: 18px;
+  filter: drop-shadow(0 10px 14px rgb(var(--letter-char) / 0.16));
+}
+
+.cabinet::after {
+  content: "";
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  bottom: 4px;
+  height: 22px;
+  z-index: -1;
+  background: radial-gradient(closest-side, rgb(var(--letter-char) / 0.3), transparent);
+}
+
+.folder {
+  --tone: 31 90 78;
+  --folder-lift: color-mix(in srgb, rgb(var(--tone)) 92%, rgb(var(--letter-paper-light)) 8%);
+  --folder-deep: color-mix(in srgb, rgb(var(--tone)) 78%, black 22%);
+  --folder-edge: color-mix(in srgb, rgb(var(--letter-char)) 55%, rgb(var(--tone)));
+  --folder-wash: color-mix(in srgb, rgb(var(--letter-paper-light)) 82%, rgb(var(--tone)) 18%);
+  --folder-wash-deep: color-mix(in srgb, rgb(var(--letter-paper-deep)) 72%, rgb(var(--tone)) 28%);
+  position: relative;
+  z-index: var(--layer);
+}
+
+.dark .folder {
+  --folder-edge: color-mix(in srgb, rgb(var(--letter-paper-light)) 55%, rgb(var(--tone)));
+}
+
+.folder[data-tone="readings"] {
+  --tone: 116 87 40;
+}
+
+.folder[data-tone="hobbies"] {
+  --tone: 138 74 46;
+}
+
+.folder[data-tone="creations"] {
+  --tone: 72 97 68;
+}
+
+.folder + .folder {
+  margin-top: calc(-1 * (var(--tab-h) + 4px));
+}
+
+.folder-heading {
+  position: relative;
+  z-index: 1;
+  width: var(--tab-w);
+  max-width: 100%;
+  margin-left: calc(var(--tab-index) * (100% - var(--tab-w)) / 3);
+  margin-bottom: -1px;
+}
+
+.folder-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: var(--tab-h);
+  padding: 1px var(--tab-pad) 0;
+  border: 1px solid var(--folder-edge);
+  border-bottom: 0;
+  border-radius: 9px 9px 0 0;
+  background: linear-gradient(to bottom, var(--folder-lift), rgb(var(--tone)));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.22),
+    0 -3px 6px -4px rgb(var(--letter-char) / 0.35);
+  color: rgb(var(--letter-paper-light));
+  font-family: var(--font-grenze), serif;
+  font-size: var(--tab-font);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.folder-tab[aria-disabled="true"] {
+  cursor: default;
+}
+
+.folder-tab:not([aria-disabled="true"]):hover {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.32),
+    0 -3px 6px -4px rgb(var(--letter-char) / 0.35);
+}
+
+.folder-body {
+  position: relative;
+  padding-bottom: calc(var(--tab-h) + var(--edge-peek) + 4px);
+  border: 1px solid var(--folder-edge);
+  border-radius: 10px;
+  background: linear-gradient(to bottom, rgb(var(--tone)) 0%, rgb(var(--tone)) 35%, var(--folder-deep) 100%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.18),
+    inset 0 -14px 18px -12px rgb(0 0 0 / 0.3),
+    0 -5px 10px -6px rgb(0 0 0 / 0.35);
+}
+
+.folder:last-child .folder-body {
+  min-height: var(--face-h);
+  padding-bottom: 14px;
+  border-top-right-radius: 0;
+}
+
+.folder:first-child .folder-body {
+  border-top-left-radius: 0;
+}
+
+.folder-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--folder-speed) cubic-bezier(0.3, 0.7, 0.2, 1);
+}
+
+.folder[data-open] .folder-panel {
+  grid-template-rows: 1fr;
+}
+
+.folder-panel-inner {
+  min-height: 0;
+  overflow: hidden;
+  overflow-anchor: none;
+}
+
+.folder-content {
+  position: relative;
+  display: flow-root;
+  margin: 12px 12px 6px;
+  padding: calc(var(--stamp-inset) + var(--stamp-outer-h) + 16px) var(--sheet-pad-x) 18px;
+  border-radius: 3px;
+  background: radial-gradient(
+    120% 90% at 30% 20%,
+    rgb(var(--letter-paper-light)) 0%,
+    rgb(var(--letter-paper)) 70%,
+    rgb(var(--letter-paper-deep)) 100%
+  );
+  box-shadow:
+    inset 0 0 var(--letter-shade-blur) rgb(var(--letter-toast) / var(--letter-shade-alpha)),
+    0 2px 4px rgb(0 0 0 / 0.28);
+  color: rgb(var(--letter-ink));
+  visibility: hidden;
+  transition: visibility 0s linear var(--folder-speed);
+}
+
+.folder[data-open] .folder-content {
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.folder-sheet-stamp {
+  position: absolute;
+  top: var(--stamp-inset);
+  right: var(--stamp-inset);
+  z-index: 1;
+}
+
+.folder-face-stamp {
+  position: absolute;
+  top: calc((var(--face-h) - var(--stamp-outer-h) * 0.88) / 2);
+  right: calc(12px + var(--stamp-inset));
+  z-index: 1;
+  scale: 0.88;
+  transform-origin: top right;
+  transition:
+    opacity 200ms ease-out 200ms,
+    visibility 0s linear 200ms;
+}
+
+.folder[data-open] .folder-face-stamp {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 120ms ease-out,
+    visibility 0s linear 120ms;
+}
+
+.folder-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 11px;
+  border: 1px solid rgb(var(--letter-line) / 0.45);
+  border-radius: 999px;
+  background: rgb(var(--letter-paper-light) / 0.7);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.8);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.folder-art {
+  display: block;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+}
+
+.folder[data-visited] .folder-art,
+html:not(.js) .folder-art {
+  background-color: rgb(var(--letter-ink));
+  mask-image: var(--art);
+  -webkit-mask-image: var(--art);
+}
+
+.folder-stamp {
+  padding: 6px;
+  rotate: 3deg;
+  background: radial-gradient(circle, transparent 2.6px, rgb(var(--letter-paper-light)) 3.1px) -3.5px -3.5px / 7px 7px;
+  filter: drop-shadow(0 1px 1.5px rgb(var(--letter-char) / 0.3));
+}
+
+.folder-stamp-face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  width: var(--stamp-w);
+  height: var(--stamp-h);
+  padding: calc(var(--stamp-frame) + var(--stamp-air)) calc(var(--stamp-frame) + var(--stamp-air)) calc(var(--stamp-frame) + 4px);
+  background: linear-gradient(to bottom, rgb(var(--letter-paper-light)), var(--folder-wash));
+  box-shadow:
+    inset 0 0 0 1.5px rgb(var(--letter-line) / 0.8),
+    inset 0 0 0 4px rgb(var(--letter-paper-light)),
+    inset 0 0 0 5px rgb(var(--letter-line) / 0.6);
+}
+
+.folder-stamp-art {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  opacity: 0.9;
+}
+
+.folder-chip-logo {
+  transition: background-color 160ms ease-out;
+}
+
+.folder-chip:hover .folder-chip-logo,
+.folder-chip:focus-visible .folder-chip-logo {
+  background-color: rgb(var(--letter-line));
+}
+
+.folder-chip:hover,
+.folder-chip:focus-visible {
+  border-color: rgb(var(--letter-line) / 0.8);
+}
+
+.folder-groups {
+  display: grid;
+  gap: 20px;
+}
+
+.folder-group + .folder-group {
+  padding-top: 16px;
+  border-top: 1px solid rgb(var(--letter-line) / 0.3);
+}
+
+.folder-group-title {
+  margin-bottom: 10px;
+}
+
+.folder-stamp-caption {
+  font-size: var(--stamp-font);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: var(--stamp-track);
+  text-transform: uppercase;
+  color: rgb(var(--letter-ink));
+}
+
+.folder-polaroids {
+  display: grid;
+  justify-content: center;
+  gap: 36px 40px;
+  padding: 10px 4px 12px;
+}
+
+@media (min-width: 640px) {
+  .folder-polaroids {
+    grid-template-columns: repeat(2, minmax(0, 15rem));
+  }
+}
+
+@media (min-width: 768px) {
+  .folder-content {
+    padding-top: 22px;
+  }
+
+  .folder-polaroids,
+  .folder-groups > :nth-child(2) {
+    margin-right: var(--stamp-reserve);
+  }
+
+  .folder-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .folder-group,
+  .folder-group + .folder-group {
+    padding: 12px 14px 14px;
+    border: 1px solid rgb(var(--letter-line) / 0.22);
+    border-radius: 4px;
+    background: rgb(var(--letter-paper-deep) / 0.45);
+    box-shadow: inset 0 1px 3px rgb(var(--letter-char) / 0.1);
+  }
+}
+
+.polaroid {
+  position: relative;
+  max-width: 15rem;
+  margin-inline: auto;
+  padding: 10px 10px 16px;
+  border: 1px solid rgb(var(--letter-line) / 0.35);
+  background: linear-gradient(170deg, rgb(var(--letter-paper-light)), color-mix(in srgb, rgb(var(--letter-paper-light)) 82%, rgb(var(--letter-paper)) 18%));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.9),
+    0 1px 1px rgb(var(--letter-char) / 0.12),
+    0 10px 16px -10px rgb(var(--letter-char) / 0.4);
+  rotate: var(--tilt);
+}
+
+.polaroid-clip {
+  position: absolute;
+  top: -16px;
+  left: 22%;
+  width: 14px;
+  height: 40px;
+  overflow: visible;
+  rotate: calc(var(--tilt) * -2);
+  filter: drop-shadow(0.5px 1px 0.6px rgb(var(--letter-char) / 0.25));
+}
+
+.polaroid-photo {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  background:
+    radial-gradient(120% 90% at 30% 20%, rgb(255 255 255 / 0.35), transparent 60%),
+    linear-gradient(160deg, var(--folder-wash), var(--folder-wash-deep));
+  box-shadow:
+    inset 0 0 0 1px rgb(var(--letter-char) / 0.12),
+    inset 0 0 24px rgb(var(--letter-char) / 0.16);
+}
+
+.polaroid-art {
+  width: 64%;
+  height: 78%;
+  opacity: 0.55;
+}
+
+.polaroid-photo:has(.polaroid-image) {
+  overflow: hidden;
+}
+
+.polaroid-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(0.15) saturate(0.85) contrast(0.95);
+}
+
+html:not(.js) .folder-panel {
+  grid-template-rows: 1fr;
+}
+
+html:not(.js) .folder-content {
+  visibility: visible;
+}
+
+html:not(.js) .folder-face-stamp {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .folder-panel,
+  .folder-content,
+  .folder-chip-logo,
+  .folder-face-stamp {
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}
+
 @keyframes mist-drift {
   from {
     transform: translate3d(-3%, 0, 0);
