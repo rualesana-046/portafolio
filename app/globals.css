@@ -99,6 +99,16 @@
   color-scheme: dark;
 }
 
+@media (max-width: 639px) {
+  :root {
+    --letter-burn: 3px;
+  }
+
+  .dark {
+    --letter-burn: 5px;
+  }
+}
+
 @layer base {
   html {
     scroll-padding-top: 5rem;
