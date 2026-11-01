@@ -50,6 +50,8 @@ export const ui = {
   mailTo: { es: "Para", en: "To" },
   mailSubject: { es: "Asunto", en: "Subject" },
   contactElsewhere: { es: "También puedes encontrarme en", en: "You can also find me on" },
+  openLetter: { es: "Abrir la carta", en: "Open the letter" },
+  envelopeHint: { es: "Abre el sobre para escribirme", en: "Open the envelope to write to me" },
   mailSubjectPrefix: { es: "Portafolio", en: "Portfolio" },
   mailBodyName: { es: "Nombre", en: "Name" },
   mailBodyEmail: { es: "Correo", en: "Email" },

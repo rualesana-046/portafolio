@@ -4,6 +4,7 @@ import { Copy } from "lucide-react";
 import { useReducedMotion } from "framer-motion";
 import { useCallback, useMemo } from "react";
 import { BurntLetter } from "@/components/ui/BurntLetter";
+import { Envelope } from "@/components/ui/Envelope";
 import { FormField } from "@/components/ui/FormField";
 import { LazyIllustration } from "@/components/ui/LazyIllustration";
 import { Reveal } from "@/components/ui/Reveal";
@@ -93,63 +94,70 @@ export function Contact() {
   return (
     <Section id="contact" heading={sections.contact}>
       <Reveal className="mx-auto max-w-3xl">
-        <BurntLetter>
-          <div className="space-y-5">
-            <h3 id={TITLE_ID} className="font-title text-3xl font-semibold sm:text-4xl">
-              {t(contact.title)}
-            </h3>
-            <LazyIllustration
-              illustration={illustrations.perchedOwl}
-              className="hidden sm:float-right sm:mb-3 sm:ml-8 sm:block sm:w-40"
-            />
-            <p className="text-lg italic">{t(contact.greeting)}</p>
-            <p className="text-base leading-relaxed sm:text-lg">{t(contact.body)}</p>
-            <form noValidate aria-labelledby={TITLE_ID} onSubmit={form.handleSubmit} className="flex flex-col gap-5 sm:clear-both">
-              <p className="text-sm text-letter-muted">{t(ui.allFieldsRequired)}</p>
-              <div className="grid gap-5 sm:grid-cols-2">
-                <FormField {...fieldProps("name")} autoComplete="name" maxLength={NAME_MAX_LENGTH} />
-                <FormField {...fieldProps("email")} type="email" autoComplete="email" maxLength={EMAIL_MAX_LENGTH} />
-              </div>
-              <FormField
-                {...fieldProps("subject")}
-                maxLength={SUBJECT_MAX_LENGTH}
-                help={`${t(ui.upTo)} ${SUBJECT_MAX_LENGTH} ${t(ui.characters)}.`}
+        <Envelope
+          label={t(ui.openLetter)}
+          hint={t(ui.envelopeHint)}
+          pointerFocusId={TITLE_ID}
+          keyboardFocusId={FIELD_ID.name}
+        >
+          <BurntLetter>
+            <div className="space-y-5">
+              <h3 id={TITLE_ID} tabIndex={-1} className="font-title text-3xl font-semibold outline-none sm:text-4xl">
+                {t(contact.title)}
+              </h3>
+              <LazyIllustration
+                illustration={illustrations.perchedOwl}
+                className="hidden sm:float-right sm:mb-3 sm:ml-8 sm:block sm:w-40"
               />
-              <FormField
-                {...fieldProps("message")}
-                multiline
-                help={`${t(ui.between)} ${MESSAGE_MIN_LENGTH} ${t(ui.and)} ${MESSAGE_MAX_LENGTH} ${t(ui.characters)}.`}
-                counter={`${messageLength} / ${MESSAGE_MAX_LENGTH}`}
-                isCounterOver={messageLength > MESSAGE_MAX_LENGTH}
-              />
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                <button
-                  type="submit"
-                  className="focus-ring-letter inline-flex items-center justify-center gap-3 rounded-full bg-letter-ink py-2 pl-2 pr-6 font-semibold text-letter-paper-light transition hover:bg-letter-ink/90"
+              <p className="text-lg italic">{t(contact.greeting)}</p>
+              <p className="text-base leading-relaxed sm:text-lg">{t(contact.body)}</p>
+              <form noValidate aria-labelledby={TITLE_ID} onSubmit={form.handleSubmit} className="flex flex-col gap-5 sm:clear-both">
+                <p className="text-sm text-letter-muted">{t(ui.allFieldsRequired)}</p>
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <FormField {...fieldProps("name")} autoComplete="name" maxLength={NAME_MAX_LENGTH} />
+                  <FormField {...fieldProps("email")} type="email" autoComplete="email" maxLength={EMAIL_MAX_LENGTH} />
+                </div>
+                <FormField
+                  {...fieldProps("subject")}
+                  maxLength={SUBJECT_MAX_LENGTH}
+                  help={`${t(ui.upTo)} ${SUBJECT_MAX_LENGTH} ${t(ui.characters)}.`}
+                />
+                <FormField
+                  {...fieldProps("message")}
+                  multiline
+                  help={`${t(ui.between)} ${MESSAGE_MIN_LENGTH} ${t(ui.and)} ${MESSAGE_MAX_LENGTH} ${t(ui.characters)}.`}
+                  counter={`${messageLength} / ${MESSAGE_MAX_LENGTH}`}
+                  isCounterOver={messageLength > MESSAGE_MAX_LENGTH}
+                />
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <button
+                    type="submit"
+                    className="focus-ring-letter inline-flex items-center justify-center gap-3 rounded-full bg-letter-ink py-2 pl-2 pr-6 font-semibold text-letter-paper-light transition hover:bg-letter-ink/90"
+                  >
+                    <WaxSeal isPressing={form.status === "stamping"} className="h-11 w-11" />
+                    {t(ui.sendLetter)}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={form.copyLetter}
+                    className="focus-ring-letter inline-flex items-center justify-center gap-2 rounded-full border border-letter-line px-5 py-3 font-semibold text-letter-ink transition hover:bg-letter-paper-light"
+                  >
+                    <Copy aria-hidden="true" className="h-4 w-4" />
+                    {t(ui.copyMessage)}
+                  </button>
+                </div>
+                <p
+                  role="status"
+                  aria-live="polite"
+                  className={cn("min-h-6 text-sm font-semibold", isProblemStatus ? "text-letter-danger" : "text-letter-ink")}
                 >
-                  <WaxSeal isPressing={form.status === "stamping"} className="h-10 w-10" />
-                  {t(ui.sendLetter)}
-                </button>
-                <button
-                  type="button"
-                  onClick={form.copyLetter}
-                  className="focus-ring-letter inline-flex items-center justify-center gap-2 rounded-full border border-letter-line px-5 py-3 font-semibold text-letter-ink transition hover:bg-letter-paper-light"
-                >
-                  <Copy aria-hidden="true" className="h-4 w-4" />
-                  {t(ui.copyMessage)}
-                </button>
-              </div>
-              <p
-                role="status"
-                aria-live="polite"
-                className={cn("min-h-6 text-sm font-semibold", isProblemStatus ? "text-letter-danger" : "text-letter-ink")}
-              >
-                {statusMessage}
-              </p>
-            </form>
-            <p className="text-right italic text-letter-muted">{t(contact.signature)}</p>
-          </div>
-        </BurntLetter>
+                  {statusMessage}
+                </p>
+              </form>
+              <p className="text-right italic text-letter-muted">{t(contact.signature)}</p>
+            </div>
+          </BurntLetter>
+        </Envelope>
       </Reveal>
       <div className="mt-12 flex flex-col items-center gap-4 text-center">
         <p id={ELSEWHERE_ID} className="text-muted">
