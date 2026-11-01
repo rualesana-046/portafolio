@@ -18,7 +18,6 @@ interface FolderProps {
   readonly isOpen: boolean;
   readonly isVisited: boolean;
   readonly isHydrated: boolean;
-  readonly isFront: boolean;
   readonly onSelect: (tab: HTMLElement) => void;
   readonly children: ReactNode;
 }
@@ -31,7 +30,6 @@ export function Folder({
   isOpen,
   isVisited,
   isHydrated,
-  isFront,
   onSelect,
   children,
 }: FolderProps) {
@@ -75,7 +73,6 @@ export function Folder({
             </div>
           </div>
         </div>
-        {isFront && <FolderStamp {...stamp} isDecorative className="folder-face-stamp" />}
       </div>
     </section>
   );

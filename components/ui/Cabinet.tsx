@@ -49,7 +49,6 @@ export function Cabinet({ folders, defaultFolder, renderContent }: CabinetProps)
             isOpen={openId === folder.id}
             isVisited={isVisited}
             isHydrated={isHydrated}
-            isFront={index === folders.length - 1}
             onSelect={(tab) => select(folder.id, tab)}
           >
             {renderContent(folder, index, isVisited)}

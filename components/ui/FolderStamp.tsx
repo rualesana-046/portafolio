@@ -7,15 +7,14 @@ interface FolderStampProps {
   readonly illustration: Illustration;
   readonly caption: string;
   readonly tilt: number;
-  readonly isDecorative?: boolean;
   readonly className?: string;
 }
 
-export function FolderStamp({ illustration, caption, tilt, isDecorative = false, className }: FolderStampProps) {
+export function FolderStamp({ illustration, caption, tilt, className }: FolderStampProps) {
   const artStyle: CSSProperties = { ...maskVariableStyle(illustration.src), rotate: `${tilt}deg` };
 
   return (
-    <div aria-hidden={isDecorative || undefined} className={cn("folder-stamp", className)}>
+    <div className={cn("folder-stamp", className)}>
       <div className="folder-stamp-face">
         <span aria-hidden="true" className="folder-art folder-stamp-art" style={artStyle} />
         <p className="folder-stamp-caption">{caption}</p>

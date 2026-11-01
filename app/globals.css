@@ -540,7 +540,7 @@ html:not(.js) .envelope-letter {
   --stamp-inset: 16px;
   --sheet-pad-x: clamp(16px, 4vw, 32px);
   --stamp-reserve: calc(var(--stamp-inset) + var(--stamp-outer-w) + 18px - var(--sheet-pad-x));
-  --face-h: 108px;
+  --face-h: 90px;
   --folder-speed: 340ms;
   position: relative;
   max-width: 56rem;
@@ -702,26 +702,6 @@ html:not(.js) .envelope-letter {
   top: var(--stamp-inset);
   right: var(--stamp-inset);
   z-index: 1;
-}
-
-.folder-face-stamp {
-  position: absolute;
-  top: calc((var(--face-h) - var(--stamp-outer-h) * 0.88) / 2);
-  right: calc(12px + var(--stamp-inset));
-  z-index: 1;
-  scale: 0.88;
-  transform-origin: top right;
-  transition:
-    opacity 200ms ease-out 200ms,
-    visibility 0s linear 200ms;
-}
-
-.folder[data-open] .folder-face-stamp {
-  opacity: 0;
-  visibility: hidden;
-  transition:
-    opacity 120ms ease-out,
-    visibility 0s linear 120ms;
 }
 
 .folder-chip {
@@ -921,15 +901,10 @@ html:not(.js) .folder-content {
   visibility: visible;
 }
 
-html:not(.js) .folder-face-stamp {
-  display: none;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .folder-panel,
   .folder-content,
-  .folder-chip-logo,
-  .folder-face-stamp {
+  .folder-chip-logo {
     transition-duration: 0s !important;
     transition-delay: 0s !important;
   }
