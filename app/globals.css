@@ -540,7 +540,7 @@ html:not(.js) .envelope-letter {
   --stamp-inset: 16px;
   --sheet-pad-x: clamp(16px, 4vw, 32px);
   --stamp-reserve: calc(var(--stamp-inset) + var(--stamp-outer-w) + 18px - var(--sheet-pad-x));
-  --face-h: 90px;
+  --face-h: 108px;
   --folder-speed: 340ms;
   position: relative;
   max-width: 56rem;
