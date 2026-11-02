@@ -1,15 +1,15 @@
 "use client";
 
 import { useReducedMotion } from "framer-motion";
-import { useEffect, useId, useRef, useState, useSyncExternalStore, type MouseEvent, type ReactNode } from "react";
+import { useEffect, useId, useRef, useState, type MouseEvent, type ReactNode } from "react";
 import { EnvelopeArt } from "@/components/ui/EnvelopeArt";
+import { useIsHydrated } from "@/hooks/useDocumentAttribute";
 
 type Step = 0 | 1 | 2 | 3 | 4 | 5;
 
 const STEP_AT_MS = [0, 0, 300, 800, 1200, 1650] as const;
 const ANIMATED_STEPS = [1, 2, 3, 4, 5] as const;
 const OPEN_STEP: Step = 5;
-const subscribeToNothing = () => () => {};
 
 interface EnvelopeProps {
   readonly label: string;
@@ -21,7 +21,7 @@ interface EnvelopeProps {
 
 export function Envelope({ label, hint, pointerFocusId, keyboardFocusId, children }: EnvelopeProps) {
   const shouldReduceMotion = useReducedMotion();
-  const isHydrated = useSyncExternalStore(subscribeToNothing, () => true, () => false);
+  const isHydrated = useIsHydrated();
   const [step, setStep] = useState<Step>(0);
   const timersRef = useRef<number[]>([]);
   const id = useId();

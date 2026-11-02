@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef, useState, useSyncExternalStore, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import { Folder } from "@/components/ui/Folder";
+import { useIsHydrated } from "@/hooks/useDocumentAttribute";
 import { useHoldInPlace } from "@/hooks/useHoldInPlace";
 import { useLocalized } from "@/hooks/useLocalized";
 import type { CabinetFolder, CabinetFolderId } from "@/types/cabinet";
@@ -12,11 +13,9 @@ interface CabinetProps {
   readonly renderContent: (folder: CabinetFolder, index: number, isVisited: boolean) => ReactNode;
 }
 
-const subscribeToNothing = () => () => {};
-
 export function Cabinet({ folders, defaultFolder, renderContent }: CabinetProps) {
   const t = useLocalized();
-  const isHydrated = useSyncExternalStore(subscribeToNothing, () => true, () => false);
+  const isHydrated = useIsHydrated();
   const [openId, setOpenId] = useState<CabinetFolderId>(defaultFolder);
   const [visited, setVisited] = useState<ReadonlySet<CabinetFolderId>>(() => new Set([defaultFolder]));
   const cabinetRef = useRef<HTMLDivElement>(null);
