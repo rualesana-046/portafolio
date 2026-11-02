@@ -33,10 +33,17 @@
   --metal-1: 138 111 62;
   --metal-2: 201 174 124;
   --metal-3: 154 85 48;
-  --brass-light: 236 210 150;
-  --brass: 186 142 74;
-  --brass-dark: 104 74 34;
-  --astrolabe-alpha: 0.9;
+  --bronze-light: 222 206 172;
+  --bronze: 168 146 108;
+  --bronze-dark: 96 80 56;
+  --frame-metal: 118 92 54;
+  --frame-metal-dark: 88 68 38;
+  --moon-light: 232 217 176;
+  --sun-dark: 92 70 38;
+  --sun: 120 91 51;
+  --sun-glint: 156 126 80;
+  --sun-glow: 236 214 166;
+  --ray: var(--sun);
   --grain-opacity: 0.07;
   --grain-blend: multiply;
   --letter-paper-light: 247 242 227;
@@ -88,7 +95,8 @@
   --metal-3: 181 112 74;
   --grain-opacity: 0.09;
   --grain-blend: soft-light;
-  --astrolabe-alpha: 0.85;
+  --frame-metal: 236 224 190;
+  --frame-metal-dark: 196 172 124;
   --letter-burn: 10px;
   --letter-shade-blur: 34px;
   --letter-shade-alpha: 0.38;
@@ -966,224 +974,6 @@ html:not(.js) .folder-content {
   }
 }
 
-.astrolabe {
-  --band-offset: 13px;
-  --band-width: 12px;
-  --rete-offset: 27px;
-  --stars-offset: 50px;
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-@media (min-width: 768px) {
-  .astrolabe {
-    --band-offset: 11px;
-    --band-width: 10px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .astrolabe {
-    --band-offset: 15px;
-    --band-width: 14px;
-    --rete-offset: 30px;
-    --stars-offset: 40px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .astrolabe {
-    --stars-offset: 50px;
-  }
-}
-
-.astrolabe-rim {
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 30% 20%, rgb(255 255 255 / 0.75) 0%, rgb(255 255 255 / 0) 18%),
-    conic-gradient(
-      from 200deg,
-      rgb(var(--brass-light)),
-      rgb(var(--brass)),
-      rgb(var(--brass-dark)),
-      rgb(var(--brass)),
-      rgb(var(--brass-light)),
-      rgb(var(--brass-dark)),
-      rgb(var(--brass-light))
-    );
-  box-shadow:
-    0 0 0 1px rgb(var(--brass-dark) / 0.6),
-    0 0 26px 4px rgb(var(--brass) / 0.35);
-}
-
-.astrolabe-defs {
-  position: absolute;
-  width: 0;
-  height: 0;
-}
-
-.astrolabe-ring {
-  position: absolute;
-  inset: calc(var(--offset) * -1);
-  border-radius: 50%;
-  opacity: var(--astrolabe-alpha);
-}
-
-.astrolabe-ring[data-ring="band"] {
-  --offset: var(--band-offset);
-}
-
-.astrolabe-ring[data-ring="rete"] {
-  --offset: var(--rete-offset);
-}
-
-.astrolabe-ring[data-ring="stars"] {
-  --offset: var(--stars-offset);
-}
-
-.astrolabe-ring[data-ring="stars"],
-.astrolabe-pointer {
-  display: none;
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-  .astrolabe-ring[data-ring="rete"] {
-    display: none;
-  }
-}
-
-@media (min-width: 1024px) {
-  .astrolabe-ring[data-ring="stars"] {
-    display: block;
-  }
-}
-
-@media (min-width: 1280px) {
-  .astrolabe-pointer {
-    display: inline;
-  }
-}
-
-.astrolabe-ring svg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-.astrolabe-band {
-  stroke: rgb(var(--brass-dark));
-  stroke-width: var(--band-width);
-}
-
-.astrolabe-tick-short {
-  stroke: rgb(var(--brass-light));
-  stroke-width: calc(var(--band-width) * 0.43);
-}
-
-.astrolabe-tick-long {
-  stroke: rgb(var(--brass-light));
-  stroke-width: calc(var(--band-width) * 0.86);
-}
-
-.astrolabe-rete {
-  stroke-width: 1.5px;
-}
-
-.astrolabe-spin {
-  animation: astrolabe-spin 240s linear infinite;
-}
-
-.astrolabe-spin[data-reverse] {
-  animation-duration: 170s;
-  animation-direction: reverse;
-}
-
-.astrolabe-twinkle {
-  animation: astrolabe-twinkle-a 4.3s ease-in-out infinite;
-}
-
-.astrolabe-twinkle[data-pattern="1"] {
-  animation: astrolabe-twinkle-b 5.9s ease-in-out -2.1s infinite;
-}
-
-.astrolabe-twinkle[data-pattern="2"] {
-  animation: astrolabe-twinkle-c 3.7s ease-in-out -1.3s infinite;
-}
-
-@media (max-width: 639px) {
-  .astrolabe-spin[data-reverse],
-  .astrolabe-twinkle[data-pattern] {
-    animation: none;
-  }
-}
-
-.astrolabe[data-offscreen] * {
-  animation-play-state: paused;
-}
-
-@keyframes astrolabe-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes astrolabe-twinkle-a {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  18% {
-    opacity: 0.25;
-  }
-  26% {
-    opacity: 0.9;
-  }
-  60% {
-    opacity: 0.4;
-  }
-}
-
-@keyframes astrolabe-twinkle-b {
-  0%,
-  100% {
-    opacity: 0.35;
-  }
-  40% {
-    opacity: 1;
-  }
-  48% {
-    opacity: 0.5;
-  }
-  55% {
-    opacity: 1;
-  }
-}
-
-@keyframes astrolabe-twinkle-c {
-  0%,
-  70%,
-  100% {
-    opacity: 0.8;
-  }
-  80% {
-    opacity: 0.15;
-  }
-  88% {
-    opacity: 1;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .astrolabe * {
-    animation: none !important;
-  }
-}
-
 .scroll {
   position: relative;
   display: flex;
@@ -1268,4 +1058,239 @@ html:not(.js) .folder-content {
   top: 50%;
   right: 1.75rem;
   translate: 0 -50%;
+}
+
+.portrait-slot {
+  --frame-d: 280px;
+  --photo-ratio: 0.7;
+  --portrait-scale: 0.7;
+  width: calc(var(--frame-d) * var(--portrait-scale) * var(--photo-ratio));
+}
+
+@media (min-width: 640px) {
+  .portrait-slot {
+    --frame-d: 344px;
+  }
+}
+
+@media (max-width: 767px) {
+  .portrait-slot {
+    margin-bottom: max(0px, calc(var(--frame-d) * var(--portrait-scale) * (1 - var(--photo-ratio)) / 2 - 32px));
+  }
+}
+
+@media (min-width: 768px) {
+  .portrait-slot {
+    --frame-d: 320px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .portrait-slot {
+    --frame-d: 412px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .portrait-slot {
+    --frame-d: 432px;
+  }
+}
+
+.sunmoon {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sunmoon-rim {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 135deg,
+    rgb(var(--bronze-light)),
+    rgb(var(--bronze)) 18%,
+    rgb(var(--bronze-dark)) 32%,
+    rgb(var(--bronze)) 46%,
+    rgb(var(--bronze-light)) 52%,
+    rgb(var(--bronze)) 66%,
+    rgb(var(--bronze-dark)) 82%,
+    rgb(var(--bronze-light))
+  );
+  box-shadow:
+    inset 0 1px 1px rgb(255 255 255 / 0.55),
+    inset 0 -1px 1px rgb(0 0 0 / 0.35),
+    0 0 0 1px rgb(var(--bronze-dark) / 0.5);
+}
+
+.sunmoon-box {
+  position: absolute;
+  inset: calc((1 / var(--photo-ratio) - 1) * -50%);
+}
+
+.sunmoon-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.sunmoon-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.sun-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgb(var(--sun-glow) / 0.35) 62%,
+    rgb(var(--sun-glow) / 0) 100%
+  );
+}
+
+.sun-ray-fill,
+.sun-star {
+  fill: rgb(var(--ray));
+}
+
+.sun-ring {
+  stroke: rgb(var(--ray));
+  stroke-width: 1px;
+}
+
+.sun-dots {
+  stroke: rgb(var(--ray));
+  stroke-width: 3px;
+  stroke-linecap: round;
+}
+
+.sunmoon-halo {
+  stroke: rgb(var(--link));
+  stroke-width: 0.75px;
+  stroke-linecap: round;
+}
+
+.sunmoon-phase {
+  fill: rgb(var(--moon-light));
+}
+
+.sunmoon-phase-outline {
+  fill: none;
+  stroke: rgb(var(--moon-light));
+  stroke-width: 0.9px;
+}
+
+.sunmoon-spin {
+  animation: sunmoon-spin 300s linear infinite;
+}
+
+.sunmoon-breathe {
+  animation-name: sunmoon-breathe;
+  animation-duration: 7s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.sunmoon-star {
+  animation-name: sunmoon-twinkle-a;
+  animation-duration: 4.6s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.sunmoon-star[data-pattern="1"] {
+  animation-name: sunmoon-twinkle-b;
+  animation-duration: 6.1s;
+  animation-delay: -2.3s;
+}
+
+.sunmoon-star[data-pattern="2"] {
+  animation-name: sunmoon-twinkle-c;
+  animation-duration: 3.9s;
+  animation-delay: -1.1s;
+}
+
+@media (max-width: 639px) {
+  .sunmoon-breathe,
+  .sunmoon-star[data-pattern] {
+    animation-name: none;
+  }
+}
+
+.sunmoon[data-offscreen] * {
+  animation-play-state: paused;
+}
+
+@keyframes sunmoon-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sunmoon-breathe {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sunmoon-twinkle-a {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0.35;
+  }
+  28% {
+    opacity: 0.9;
+  }
+  64% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes sunmoon-twinkle-b {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  42% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  57% {
+    opacity: 1;
+  }
+}
+
+@keyframes sunmoon-twinkle-c {
+  0%,
+  72%,
+  100% {
+    opacity: 0.85;
+  }
+  81% {
+    opacity: 0.25;
+  }
+  89% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sunmoon * {
+    animation: none !important;
+  }
 }

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { ScrollText } from "lucide-react";
-import { AstrolabeFrame } from "@/components/ui/AstrolabeFrame";
+import { SunMoonFrame } from "@/components/ui/SunMoonFrame";
 import { HeroScene } from "@/components/ui/HeroScene";
 import { profile } from "@/data/profile";
 import { sections } from "@/data/sections";
@@ -52,9 +52,9 @@ export function Hero() {
             </a>
           </div>
         </div>
-        <div className="order-1 mx-auto w-56 motion-safe:animate-ink-rise sm:w-72 md:order-2 lg:w-80">
+        <div className="portrait-slot order-1 mx-auto motion-safe:animate-ink-rise md:order-2">
           <div className="relative">
-            <AstrolabeFrame />
+            <SunMoonFrame />
             <Image
               src={profile.photo}
               alt={t(profile.photoAlt)}
@@ -63,7 +63,7 @@ export function Hero() {
               preload
               fetchPriority="high"
               unoptimized={isVectorImage(profile.photo)}
-              sizes="(min-width: 1024px) 20rem, (min-width: 640px) 18rem, 14rem"
+              sizes="(min-width: 1280px) 212px, (min-width: 1024px) 202px, (min-width: 768px) 157px, (min-width: 640px) 169px, 138px"
               className="relative aspect-square w-full rounded-full object-cover object-[50%_30%] shadow-arcane ring-1 ring-accent/60"
             />
           </div>
