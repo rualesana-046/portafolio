@@ -64,7 +64,6 @@ const config: Config = {
       fontFamily: {
         title: ["var(--font-grenze)", ...fontFamily.serif],
         body: ["var(--font-newsreader)", ...fontFamily.serif],
-        monogram: ["var(--font-unifraktur)", ...fontFamily.serif],
       },
       boxShadow: {
         arcane: "0 0 24px -6px rgb(var(--glow) / 0.45)",

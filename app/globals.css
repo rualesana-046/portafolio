@@ -234,11 +234,17 @@
   }
 
   .seal {
-    @apply grid place-items-center rounded-full font-monogram leading-none text-on-seal;
+    @apply grid place-items-center rounded-full leading-none text-on-seal;
     border: 2px solid transparent;
     background:
       radial-gradient(circle at 35% 30%, rgb(var(--seal-from)), rgb(var(--seal-to)) 75%) padding-box,
       linear-gradient(135deg, rgb(var(--metal-2)), rgb(var(--metal-0)), rgb(var(--metal-3))) border-box;
+  }
+
+  .seal-mark {
+    width: 1.6514em;
+    height: 1.3086em;
+    fill: currentColor;
   }
 }
 

@@ -2,7 +2,6 @@ import type { Localized } from "@/types/i18n";
 
 export interface Profile {
   readonly name: string;
-  readonly monogram: string;
   readonly headline: Localized;
   readonly summary: Localized;
   readonly photo: string;

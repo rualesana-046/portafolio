@@ -4,6 +4,7 @@ import { AnimatePresence, m } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { LanguageToggle } from "@/components/ui/LanguageToggle";
+import { Monogram } from "@/components/ui/Monogram";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { navigation } from "@/data/navigation";
 import { profile } from "@/data/profile";
@@ -100,7 +101,7 @@ export function Navbar() {
             aria-hidden="true"
             className="seal h-10 w-10 shrink-0 text-lg shadow-arcane"
           >
-            {profile.monogram}
+            <Monogram />
           </span>
           <span className="sr-only sm:not-sr-only sm:whitespace-nowrap sm:text-lg lg:sr-only xl:not-sr-only xl:whitespace-nowrap">
             {profile.name}

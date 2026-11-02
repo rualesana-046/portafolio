@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Grenze_Gotisch, Newsreader, UnifrakturCook } from "next/font/google";
+import { Grenze_Gotisch, Newsreader } from "next/font/google";
 import { siteMetadata } from "@/data/site";
 import { cn } from "@/lib/cn";
 import { DEFAULT_LOCALE, localeInitScript } from "@/lib/i18n";
@@ -22,12 +22,6 @@ const newsreader = Newsreader({
   variable: "--font-newsreader",
   display: "swap",
 });
-const unifraktur = UnifrakturCook({
-  subsets: ["latin"],
-  weight: "700",
-  variable: "--font-unifraktur",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   description: siteMetadata.description[DEFAULT_LOCALE],
@@ -41,7 +35,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang={DEFAULT_LOCALE}
-      className={cn(grenze.variable, newsreader.variable, unifraktur.variable)}
+      className={cn(grenze.variable, newsreader.variable)}
       suppressHydrationWarning
     >
       <head>
