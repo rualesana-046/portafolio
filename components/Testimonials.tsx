@@ -2,7 +2,7 @@
 
 import { Briefcase, GraduationCap, Quote, type LucideIcon } from "lucide-react";
 import Image from "next/image";
-import { GlassCard } from "@/components/ui/GlassCard";
+import { ParchmentScroll } from "@/components/ui/ParchmentScroll";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 import { sections } from "@/data/sections";
@@ -42,24 +42,13 @@ function AuthorPortrait({ testimonial }: { readonly testimonial: Testimonial }) 
   );
 }
 
-function TestimonialPlaque({ testimonial }: { readonly testimonial: Testimonial }) {
+const SCROLL_TILTS = [-1.2, 0.8, -0.6, 1.4] as const;
+
+function TestimonialQuote({ testimonial }: { readonly testimonial: Testimonial }) {
   const t = useLocalized();
-  const seal = waxSeals[testimonial.context];
-  const SealIcon = seal.icon;
 
   return (
-    <GlassCard as="figure" className="flex h-full flex-col gap-6 p-7">
-      <div className="flex items-start justify-between gap-4">
-        <Quote aria-hidden="true" className="h-8 w-8 text-accent" />
-        <div className="flex flex-col items-center gap-1.5">
-          <span aria-hidden="true" className={cn("wax-seal", seal.className)}>
-            <SealIcon className="h-5 w-5" />
-          </span>
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-strong">
-            {t(testimonialContextLabels[testimonial.context])}
-          </span>
-        </div>
-      </div>
+    <>
       <blockquote className="flex-1 text-lg italic leading-relaxed text-ink">
         <p>{t(testimonial.quote)}</p>
       </blockquote>
@@ -71,7 +60,32 @@ function TestimonialPlaque({ testimonial }: { readonly testimonial: Testimonial 
           <span className="text-sm text-muted">{testimonial.organization}</span>
         </span>
       </figcaption>
-    </GlassCard>
+    </>
+  );
+}
+
+function TestimonialScroll({ testimonial, index }: { readonly testimonial: Testimonial; readonly index: number }) {
+  const t = useLocalized();
+  const seal = waxSeals[testimonial.context];
+  const SealIcon = seal.icon;
+
+  return (
+    <ParchmentScroll
+      tilt={SCROLL_TILTS[index % SCROLL_TILTS.length] ?? 0}
+      seal={
+        <span className={cn("wax-seal", seal.className)}>
+          <SealIcon className="h-5 w-5" />
+        </span>
+      }
+    >
+      <div className="flex items-start justify-between gap-4">
+        <Quote aria-hidden="true" className="h-8 w-8 text-accent" />
+        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-strong">
+          {t(testimonialContextLabels[testimonial.context])}
+        </span>
+      </div>
+      <TestimonialQuote testimonial={testimonial} />
+    </ParchmentScroll>
   );
 }
 
@@ -82,7 +96,7 @@ export function Testimonials() {
         {testimonials.map((testimonial, index) => (
           <li key={testimonial.id}>
             <Reveal delay={index * 0.1} className="h-full">
-              <TestimonialPlaque testimonial={testimonial} />
+              <TestimonialScroll testimonial={testimonial} index={index} />
             </Reveal>
           </li>
         ))}
