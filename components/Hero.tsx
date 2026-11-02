@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { ScrollText } from "lucide-react";
+import { AstrolabeFrame } from "@/components/ui/AstrolabeFrame";
 import { HeroScene } from "@/components/ui/HeroScene";
 import { profile } from "@/data/profile";
 import { sections } from "@/data/sections";
@@ -53,29 +54,18 @@ export function Hero() {
         </div>
         <div className="order-1 mx-auto w-56 motion-safe:animate-ink-rise sm:w-72 md:order-2 lg:w-80">
           <div className="relative">
-            <span
-              aria-hidden="true"
-              data-portrait-frame=""
-              className="absolute -inset-3 rounded-full border border-accent/30"
+            <AstrolabeFrame />
+            <Image
+              src={profile.photo}
+              alt={t(profile.photoAlt)}
+              width={960}
+              height={960}
+              preload
+              fetchPriority="high"
+              unoptimized={isVectorImage(profile.photo)}
+              sizes="(min-width: 1024px) 20rem, (min-width: 640px) 18rem, 14rem"
+              className="relative aspect-square w-full rounded-full object-cover object-[50%_30%] shadow-arcane ring-1 ring-accent/60"
             />
-            {isVectorImage(profile.photo) ? (
-              <div
-                role="img"
-                aria-label={t(profile.photoAlt)}
-                className="hero-portrait relative aspect-square w-full rounded-full shadow-arcane ring-1 ring-accent/60"
-              />
-            ) : (
-              <Image
-                src={profile.photo}
-                alt={t(profile.photoAlt)}
-                width={960}
-                height={1200}
-                preload
-                fetchPriority="high"
-                sizes="(min-width: 1024px) 20rem, (min-width: 640px) 18rem, 14rem"
-                className="relative aspect-square w-full rounded-full object-cover shadow-arcane ring-1 ring-accent/60"
-              />
-            )}
           </div>
         </div>
       </div>

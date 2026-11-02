@@ -33,9 +33,10 @@
   --metal-1: 138 111 62;
   --metal-2: 201 174 124;
   --metal-3: 154 85 48;
-  --portrait-from: 20 88 76;
-  --portrait-via: 5 42 36;
-  --portrait-to: 3 28 24;
+  --brass-light: 236 210 150;
+  --brass: 186 142 74;
+  --brass-dark: 104 74 34;
+  --astrolabe-alpha: 0.9;
   --grain-opacity: 0.07;
   --grain-blend: multiply;
   --letter-paper-light: 247 242 227;
@@ -87,6 +88,7 @@
   --metal-3: 181 112 74;
   --grain-opacity: 0.09;
   --grain-blend: soft-light;
+  --astrolabe-alpha: 0.85;
   --letter-burn: 10px;
   --letter-shade-blur: 34px;
   --letter-shade-alpha: 0.38;
@@ -921,15 +923,6 @@ html:not(.js) .folder-content {
   }
 }
 
-.hero-portrait {
-  background: linear-gradient(
-    to bottom,
-    rgb(var(--portrait-from)) 0%,
-    rgb(var(--portrait-via)) 60%,
-    rgb(var(--portrait-to)) 100%
-  );
-}
-
 .hero-scene {
   position: absolute;
   left: 0;
@@ -970,5 +963,223 @@ html:not(.js) .folder-content {
 @media (prefers-reduced-motion: reduce) {
   .hero-scene canvas {
     transition: none;
+  }
+}
+
+.astrolabe {
+  --band-offset: 13px;
+  --band-width: 12px;
+  --rete-offset: 27px;
+  --stars-offset: 50px;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .astrolabe {
+    --band-offset: 11px;
+    --band-width: 10px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .astrolabe {
+    --band-offset: 15px;
+    --band-width: 14px;
+    --rete-offset: 30px;
+    --stars-offset: 40px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .astrolabe {
+    --stars-offset: 50px;
+  }
+}
+
+.astrolabe-rim {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 20%, rgb(255 255 255 / 0.75) 0%, rgb(255 255 255 / 0) 18%),
+    conic-gradient(
+      from 200deg,
+      rgb(var(--brass-light)),
+      rgb(var(--brass)),
+      rgb(var(--brass-dark)),
+      rgb(var(--brass)),
+      rgb(var(--brass-light)),
+      rgb(var(--brass-dark)),
+      rgb(var(--brass-light))
+    );
+  box-shadow:
+    0 0 0 1px rgb(var(--brass-dark) / 0.6),
+    0 0 26px 4px rgb(var(--brass) / 0.35);
+}
+
+.astrolabe-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.astrolabe-ring {
+  position: absolute;
+  inset: calc(var(--offset) * -1);
+  border-radius: 50%;
+  opacity: var(--astrolabe-alpha);
+}
+
+.astrolabe-ring[data-ring="band"] {
+  --offset: var(--band-offset);
+}
+
+.astrolabe-ring[data-ring="rete"] {
+  --offset: var(--rete-offset);
+}
+
+.astrolabe-ring[data-ring="stars"] {
+  --offset: var(--stars-offset);
+}
+
+.astrolabe-ring[data-ring="stars"],
+.astrolabe-pointer {
+  display: none;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .astrolabe-ring[data-ring="rete"] {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .astrolabe-ring[data-ring="stars"] {
+    display: block;
+  }
+}
+
+@media (min-width: 1280px) {
+  .astrolabe-pointer {
+    display: inline;
+  }
+}
+
+.astrolabe-ring svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.astrolabe-band {
+  stroke: rgb(var(--brass-dark));
+  stroke-width: var(--band-width);
+}
+
+.astrolabe-tick-short {
+  stroke: rgb(var(--brass-light));
+  stroke-width: calc(var(--band-width) * 0.43);
+}
+
+.astrolabe-tick-long {
+  stroke: rgb(var(--brass-light));
+  stroke-width: calc(var(--band-width) * 0.86);
+}
+
+.astrolabe-rete {
+  stroke-width: 1.5px;
+}
+
+.astrolabe-spin {
+  animation: astrolabe-spin 240s linear infinite;
+}
+
+.astrolabe-spin[data-reverse] {
+  animation-duration: 170s;
+  animation-direction: reverse;
+}
+
+.astrolabe-twinkle {
+  animation: astrolabe-twinkle-a 4.3s ease-in-out infinite;
+}
+
+.astrolabe-twinkle[data-pattern="1"] {
+  animation: astrolabe-twinkle-b 5.9s ease-in-out -2.1s infinite;
+}
+
+.astrolabe-twinkle[data-pattern="2"] {
+  animation: astrolabe-twinkle-c 3.7s ease-in-out -1.3s infinite;
+}
+
+@media (max-width: 639px) {
+  .astrolabe-spin[data-reverse],
+  .astrolabe-twinkle[data-pattern] {
+    animation: none;
+  }
+}
+
+.astrolabe[data-offscreen] * {
+  animation-play-state: paused;
+}
+
+@keyframes astrolabe-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes astrolabe-twinkle-a {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  18% {
+    opacity: 0.25;
+  }
+  26% {
+    opacity: 0.9;
+  }
+  60% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes astrolabe-twinkle-b {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  40% {
+    opacity: 1;
+  }
+  48% {
+    opacity: 0.5;
+  }
+  55% {
+    opacity: 1;
+  }
+}
+
+@keyframes astrolabe-twinkle-c {
+  0%,
+  70%,
+  100% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.15;
+  }
+  88% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .astrolabe * {
+    animation: none !important;
   }
 }
