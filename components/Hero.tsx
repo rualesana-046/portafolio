@@ -22,8 +22,8 @@ export function Hero() {
       className="relative flex min-h-[100svh] items-center overflow-hidden px-4 pb-44 pt-28 sm:px-6 sm:pb-60 lg:pt-32"
     >
       <HeroScene />
-      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-[1.25fr_1fr] lg:gap-16">
-        <div className="order-2 text-center md:order-1 md:text-left">
+      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-[1.25fr_1fr] md:grid-rows-[repeat(5,auto)] md:gap-y-0 lg:gap-x-16">
+        <div className="order-2 text-center md:order-1 md:col-start-1 md:row-span-5 md:row-start-1 md:grid md:grid-rows-subgrid md:text-left">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-accent-strong motion-safe:animate-ink-rise">
             {t(sections.hero.title)}
           </p>
@@ -52,7 +52,7 @@ export function Hero() {
             </a>
           </div>
         </div>
-        <div className="portrait-slot order-1 mx-auto motion-safe:animate-ink-rise md:order-2">
+        <div className="portrait-slot order-1 mx-auto motion-safe:animate-ink-rise md:order-2 md:col-start-2 md:row-span-4 md:row-start-1 md:self-center">
           <div className="relative">
             <SunMoonFrame />
             <Image

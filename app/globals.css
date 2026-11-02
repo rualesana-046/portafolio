@@ -39,9 +39,7 @@
   --frame-metal: 118 92 54;
   --frame-metal-dark: 88 68 38;
   --moon-light: 232 217 176;
-  --sun-dark: 92 70 38;
   --sun: 120 91 51;
-  --sun-glint: 156 126 80;
   --sun-glow: 236 214 166;
   --ray: var(--sun);
   --grain-opacity: 0.07;
