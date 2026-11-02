@@ -33,10 +33,9 @@
   --metal-1: 138 111 62;
   --metal-2: 201 174 124;
   --metal-3: 154 85 48;
-  --tree-far: 168 182 160;
-  --tree-mid: 120 142 120;
-  --tree-near: 58 86 78;
-  --mist: 243 240 226;
+  --portrait-from: 20 88 76;
+  --portrait-via: 5 42 36;
+  --portrait-to: 3 28 24;
   --grain-opacity: 0.07;
   --grain-blend: multiply;
   --letter-paper-light: 247 242 227;
@@ -86,10 +85,6 @@
   --metal-1: 201 174 124;
   --metal-2: 232 217 176;
   --metal-3: 181 112 74;
-  --tree-far: 16 74 63;
-  --tree-mid: 9 52 44;
-  --tree-near: 2 22 19;
-  --mist: 160 196 180;
   --grain-opacity: 0.09;
   --grain-blend: soft-light;
   --letter-burn: 10px;
@@ -910,15 +905,6 @@ html:not(.js) .folder-content {
   }
 }
 
-@keyframes mist-drift {
-  from {
-    transform: translate3d(-3%, 0, 0);
-  }
-  to {
-    transform: translate3d(3%, 0, 0);
-  }
-}
-
 @keyframes leaf-sheen {
   to {
     background-position: 100% 50%;
@@ -933,17 +919,56 @@ html:not(.js) .folder-content {
   .text-leaf {
     animation: leaf-sheen 9s ease-in-out infinite alternate;
   }
+}
 
-  .mist-band {
-    animation: mist-drift 26s ease-in-out infinite alternate;
+.hero-portrait {
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--portrait-from)) 0%,
+    rgb(var(--portrait-via)) 60%,
+    rgb(var(--portrait-to)) 100%
+  );
+}
+
+.hero-scene {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  max-height: 100%;
+  pointer-events: none;
+  mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0) 35%, rgb(0 0 0) 88%, transparent 100%);
+}
+
+@media (max-width: 639px) {
+  .hero-scene {
+    mask-image: linear-gradient(
+      to bottom,
+      transparent calc(100% - 13rem),
+      rgb(0 0 0) calc(100% - 8rem),
+      rgb(0 0 0) calc(100% - 2.5rem),
+      transparent 100%
+    );
   }
+}
 
-  .mist-band-slow {
-    animation: mist-drift 40s ease-in-out infinite alternate-reverse;
-  }
+.hero-scene canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 100%;
+  opacity: 0;
+  transition: opacity 1.2s ease-out;
+}
 
-  [data-offscreen] .mist-band,
-  [data-offscreen] .mist-band-slow {
-    animation-play-state: paused;
+.hero-scene[data-loaded] canvas {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scene canvas {
+    transition: none;
   }
 }

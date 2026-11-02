@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { ScrollText } from "lucide-react";
-import { ForestSilhouette } from "@/components/ui/ForestSilhouette";
+import { HeroScene } from "@/components/ui/HeroScene";
 import { profile } from "@/data/profile";
 import { sections } from "@/data/sections";
 import { ui } from "@/data/ui";
@@ -20,7 +20,7 @@ export function Hero() {
       aria-labelledby={HEADING_ID}
       className="relative flex min-h-[100svh] items-center overflow-hidden px-4 pb-44 pt-28 sm:px-6 sm:pb-60 lg:pt-32"
     >
-      <ForestSilhouette className="absolute inset-x-0 bottom-0 h-40 sm:h-56" />
+      <HeroScene />
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-[1.25fr_1fr] lg:gap-16">
         <div className="order-2 text-center md:order-1 md:text-left">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-accent-strong motion-safe:animate-ink-rise">
@@ -55,19 +55,27 @@ export function Hero() {
           <div className="relative">
             <span
               aria-hidden="true"
-              className="absolute -inset-3 rounded-b-[2.25rem] rounded-t-full border border-accent/30"
+              data-portrait-frame=""
+              className="absolute -inset-3 rounded-full border border-accent/30"
             />
-            <Image
-              src={profile.photo}
-              alt={t(profile.photoAlt)}
-              width={960}
-              height={1200}
-              preload
-              fetchPriority="high"
-              unoptimized={isVectorImage(profile.photo)}
-              sizes="(min-width: 1024px) 20rem, (min-width: 640px) 18rem, 14rem"
-              className="relative aspect-[4/5] w-full rounded-b-[2rem] rounded-t-full object-cover shadow-arcane ring-1 ring-accent/60"
-            />
+            {isVectorImage(profile.photo) ? (
+              <div
+                role="img"
+                aria-label={t(profile.photoAlt)}
+                className="hero-portrait relative aspect-square w-full rounded-full shadow-arcane ring-1 ring-accent/60"
+              />
+            ) : (
+              <Image
+                src={profile.photo}
+                alt={t(profile.photoAlt)}
+                width={960}
+                height={1200}
+                preload
+                fetchPriority="high"
+                sizes="(min-width: 1024px) 20rem, (min-width: 640px) 18rem, 14rem"
+                className="relative aspect-square w-full rounded-full object-cover shadow-arcane ring-1 ring-accent/60"
+              />
+            )}
           </div>
         </div>
       </div>
