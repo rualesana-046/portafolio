@@ -1,3 +1,5 @@
+import { roundToHundredths } from "@/lib/number";
+
 export interface BurnShape {
   readonly seed: number;
   readonly pointsPerSide: number;
@@ -29,28 +31,24 @@ function seededRandom(seed: number): () => number {
   };
 }
 
-function round(value: number): number {
-  return Math.round(value * 100) / 100;
-}
-
 function depth(factor: number): string {
-  return `calc(${DEPTH}*${round(factor)})`;
+  return `calc(${DEPTH}*${roundToHundredths(factor)})`;
 }
 
 function inverseDepth(factor: number): string {
-  return `calc(100% - ${DEPTH}*${round(factor)})`;
+  return `calc(100% - ${DEPTH}*${roundToHundredths(factor)})`;
 }
 
 function travel(along: number, startCorner: number, endCorner: number): string {
   if (along < CORNER_ZONE) {
     const t = along / CORNER_ZONE;
-    return `${DEPTH}*${round(startCorner * (1 - t))} + ${round(CORNER_ZONE * 100 * t)}%`;
+    return `${DEPTH}*${roundToHundredths(startCorner * (1 - t))} + ${roundToHundredths(CORNER_ZONE * 100 * t)}%`;
   }
   if (along > 1 - CORNER_ZONE) {
     const t = (1 - along) / CORNER_ZONE;
-    return `100% - ${DEPTH}*${round(endCorner * (1 - t))} - ${round(CORNER_ZONE * 100 * t)}%`;
+    return `100% - ${DEPTH}*${roundToHundredths(endCorner * (1 - t))} - ${roundToHundredths(CORNER_ZONE * 100 * t)}%`;
   }
-  return `${round(along * 100)}%`;
+  return `${roundToHundredths(along * 100)}%`;
 }
 
 function alongPosition(along: number, startCorner: number, endCorner: number, reversed: boolean): string {

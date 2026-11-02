@@ -3,6 +3,7 @@
 import { useInView } from "framer-motion";
 import { useId, useRef } from "react";
 import { useTheme } from "@/hooks/useTheme";
+import { roundToHundredths } from "@/lib/number";
 
 const CENTER = 50;
 const RAY_START = 37.2;
@@ -14,11 +15,9 @@ const STARS = [
   { angle: 311, points: 4, pattern: 1 },
 ] as const;
 
-const round = (value: number) => Number(value.toFixed(2));
-
 function polar(radius: number, degrees: number): readonly [number, number] {
   const radians = ((degrees - 90) * Math.PI) / 180;
-  return [round(CENTER + radius * Math.cos(radians)), round(CENTER + radius * Math.sin(radians))];
+  return [roundToHundredths(CENTER + radius * Math.cos(radians)), roundToHundredths(CENTER + radius * Math.sin(radians))];
 }
 
 function straightRays(count: number, start: number, longEnd: number, shortEnd: number): string {
@@ -42,7 +41,7 @@ function starPath(points: 4 | 8, length: number, waist: number): string {
           Math.cos(((angle + half) * Math.PI) / 180) * waist,
           Math.sin(((angle + half) * Math.PI) / 180) * waist,
         ];
-        return [`${index === 0 ? "M" : "L"}${round(tip[0] ?? 0)} ${round(tip[1] ?? 0)}`, `L${round(notch[0] ?? 0)} ${round(notch[1] ?? 0)}`];
+        return [`${index === 0 ? "M" : "L"}${roundToHundredths(tip[0] ?? 0)} ${roundToHundredths(tip[1] ?? 0)}`, `L${roundToHundredths(notch[0] ?? 0)} ${roundToHundredths(notch[1] ?? 0)}`];
       })
       .join("") + "Z"
   );
@@ -55,7 +54,7 @@ function moonPhase(phase: number, radius: number): string {
   if (phase === 4) return `M0 ${-r}A${r} ${r} 0 1 1 0 ${r}A${r} ${r} 0 1 1 0 ${-r}Z`;
   const isWaxing = lit < 0.5;
   const fraction = isWaxing ? lit * 2 : (1 - lit) * 2;
-  const terminator = round(Math.abs(Math.cos(fraction * Math.PI)) * r);
+  const terminator = roundToHundredths(Math.abs(Math.cos(fraction * Math.PI)) * r);
   const outerSweep = isWaxing ? 1 : 0;
   const innerSweep = fraction < 0.5 === isWaxing ? 0 : 1;
   return `M0 ${-r}A${r} ${r} 0 0 ${outerSweep} 0 ${r}A${terminator} ${r} 0 0 ${innerSweep} 0 ${-r}Z`;
@@ -85,7 +84,7 @@ const PHASE_RING = 43.2;
 const PHASES = Array.from({ length: 8 }, (_, phase) => ({ phase, position: polar(PHASE_RING, phase * 45) }));
 const PHASE_OUTLINES = PHASES.map(
   ({ position: [x, y] }) =>
-    `M${x} ${round(y - PHASE_RADIUS)}A${PHASE_RADIUS} ${PHASE_RADIUS} 0 1 1 ${x} ${round(y + PHASE_RADIUS)}A${PHASE_RADIUS} ${PHASE_RADIUS} 0 1 1 ${x} ${round(y - PHASE_RADIUS)}Z`,
+    `M${x} ${roundToHundredths(y - PHASE_RADIUS)}A${PHASE_RADIUS} ${PHASE_RADIUS} 0 1 1 ${x} ${roundToHundredths(y + PHASE_RADIUS)}A${PHASE_RADIUS} ${PHASE_RADIUS} 0 1 1 ${x} ${roundToHundredths(y - PHASE_RADIUS)}Z`,
 ).join("");
 
 function Stars({ gradient }: { readonly gradient: string }) {
