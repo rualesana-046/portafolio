@@ -1,4 +1,11 @@
 const EXTERNAL_URL_PATTERN = /^https?:\/\//i;
+const PLACEHOLDER_PATTERN = /\{(\w+)\}/g;
+
+export function fillTemplate(template: string, values: Readonly<Record<string, string | number>>): string {
+  return template.replace(PLACEHOLDER_PATTERN, (placeholder, key: string) =>
+    key in values ? String(values[key]) : placeholder,
+  );
+}
 
 export function getInitials(name: string): string {
   const words = name.trim().split(/\s+/).filter(Boolean);

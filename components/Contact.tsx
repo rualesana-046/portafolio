@@ -21,6 +21,7 @@ import { useLocalized } from "@/hooks/useLocalized";
 import { cn } from "@/lib/cn";
 import { openUrl } from "@/lib/dom";
 import { buildMailtoUrl, composeLetter, formatLetterForClipboard, getEmailAddress } from "@/lib/mailto";
+import { fillTemplate } from "@/lib/text";
 import {
   codePointLength,
   EMAIL_MAX_LENGTH,
@@ -120,13 +121,13 @@ export function Contact() {
                 <FormField
                   {...fieldProps("subject")}
                   maxLength={SUBJECT_MAX_LENGTH}
-                  help={`${t(ui.upTo)} ${SUBJECT_MAX_LENGTH} ${t(ui.characters)}.`}
+                  help={fillTemplate(t(ui.subjectHelp), { max: SUBJECT_MAX_LENGTH })}
                 />
                 <FormField
                   {...fieldProps("message")}
                   multiline
-                  help={`${t(ui.between)} ${MESSAGE_MIN_LENGTH} ${t(ui.and)} ${MESSAGE_MAX_LENGTH} ${t(ui.characters)}.`}
-                  counter={`${messageLength} / ${MESSAGE_MAX_LENGTH}`}
+                  help={fillTemplate(t(ui.messageHelp), { min: MESSAGE_MIN_LENGTH, max: MESSAGE_MAX_LENGTH })}
+                  counter={fillTemplate(t(ui.messageCounter), { count: messageLength, max: MESSAGE_MAX_LENGTH })}
                   isCounterOver={messageLength > MESSAGE_MAX_LENGTH}
                 />
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center">

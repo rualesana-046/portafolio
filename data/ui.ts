@@ -42,10 +42,9 @@ export const ui = {
   viewCredential: { es: "Ver credencial", en: "View credential" },
   sendLetter: { es: "Sellar y abrir en mi correo", en: "Seal and open in my email" },
   copyMessage: { es: "Copiar mensaje", en: "Copy message" },
-  characters: { es: "caracteres", en: "characters" },
-  upTo: { es: "Hasta", en: "Up to" },
-  between: { es: "Entre", en: "Between" },
-  and: { es: "y", en: "and" },
+  subjectHelp: { es: "Hasta {max} caracteres.", en: "Up to {max} characters." },
+  messageHelp: { es: "Entre {min} y {max} caracteres.", en: "Between {min} and {max} characters." },
+  messageCounter: { es: "{count} / {max}", en: "{count} / {max}" },
   allFieldsRequired: { es: "Todos los campos son obligatorios.", en: "All fields are required." },
   formHasErrors: {
     es: "Revisa los campos marcados antes de sellar la carta.",
