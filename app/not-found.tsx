@@ -4,12 +4,13 @@ import Link from "next/link";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { ui } from "@/data/ui";
 import { useLocalized } from "@/hooks/useLocalized";
+import { CONTENT_ID } from "@/lib/anchors";
 
 export default function NotFound() {
   const t = useLocalized();
 
   return (
-    <main id="content" className="flex min-h-[100svh] items-center justify-center px-4 py-16">
+    <main id={CONTENT_ID} className="flex min-h-[100svh] items-center justify-center px-4 py-16">
       <GlassCard decoration="parchment" className="w-full max-w-lg p-10 text-center sm:p-14">
         <p aria-hidden="true" className="text-leaf font-title text-8xl font-semibold">
           404

@@ -11,6 +11,7 @@ import { profile } from "@/data/profile";
 import { ui } from "@/data/ui";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { useLocalized } from "@/hooks/useLocalized";
+import { CONTENT_ID, HERO_ID, toHash } from "@/lib/anchors";
 import { cn } from "@/lib/cn";
 import type { SectionId } from "@/types/navigation";
 
@@ -33,7 +34,7 @@ function NavigationLinks({ activeId, className, linkClassName, onNavigate }: Nav
       {navigation.map((item) => (
         <li key={item.id}>
           <a
-            href={`#${item.id}`}
+            href={toHash(item.id)}
             onClick={onNavigate}
             aria-current={activeId === item.id ? "location" : undefined}
             className={cn(
@@ -84,7 +85,7 @@ export function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line/70 bg-canvas/75 backdrop-blur-md dark:border-line/40">
       <a
-        href="#content"
+        href={toHash(CONTENT_ID)}
         className="focus-ring sr-only rounded-md bg-button-to px-4 py-2 text-sm font-semibold text-on-button focus:not-sr-only focus:absolute focus:left-4 focus:top-3"
       >
         {t(ui.skipToContent)}
@@ -94,7 +95,7 @@ export function Navbar() {
         className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6"
       >
         <a
-          href="#hero"
+          href={toHash(HERO_ID)}
           className="focus-ring flex min-w-0 items-center gap-3 rounded-full font-semibold tracking-wide text-accent-strong sm:rounded-md"
         >
           <span

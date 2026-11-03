@@ -7,12 +7,13 @@ import { Navbar } from "@/components/Navbar";
 import { Projects } from "@/components/Projects";
 import { Skills } from "@/components/Skills";
 import { Testimonials } from "@/components/Testimonials";
+import { CONTENT_ID } from "@/lib/anchors";
 
 export default function HomePage() {
   return (
     <>
       <Navbar />
-      <main id="content">
+      <main id={CONTENT_ID}>
         <Hero />
         <About />
         <Projects />

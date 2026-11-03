@@ -8,16 +8,17 @@ import { profile } from "@/data/profile";
 import { sections } from "@/data/sections";
 import { ui } from "@/data/ui";
 import { useLocalized } from "@/hooks/useLocalized";
+import { HERO_ID } from "@/lib/anchors";
 import { isVectorImage } from "@/lib/media";
 
-const HEADING_ID = "hero-heading";
+const HEADING_ID = `${HERO_ID}-heading`;
 
 export function Hero() {
   const t = useLocalized();
 
   return (
     <section
-      id="hero"
+      id={HERO_ID}
       aria-labelledby={HEADING_ID}
       className="relative flex min-h-[100svh] items-center overflow-hidden px-4 pb-44 pt-28 sm:px-6 sm:pb-60 lg:pt-32"
     >
