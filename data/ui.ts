@@ -61,6 +61,7 @@ export const ui = {
   mailBodyMessage: { es: "Mensaje", en: "Message" },
   socialLinks: { es: "Redes y contacto", en: "Social and contact links" },
   copyrightSymbol: { es: "©", en: "©" },
+  notFoundCode: { es: "404", en: "404" },
   notFoundTitle: { es: "Página no encontrada", en: "Page not found" },
   notFoundBody: {
     es: "Este sendero del bosque no lleva a ninguna parte.",

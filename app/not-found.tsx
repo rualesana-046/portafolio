@@ -13,7 +13,7 @@ export default function NotFound() {
     <main id={CONTENT_ID} className="flex min-h-[100svh] items-center justify-center px-4 py-16">
       <GlassCard decoration="parchment" className="w-full max-w-lg p-10 text-center sm:p-14">
         <p aria-hidden="true" className="text-leaf font-title text-8xl font-semibold">
-          404
+          {t(ui.notFoundCode)}
         </p>
         <h1 className="mt-4 font-title text-2xl font-semibold tracking-wide text-ink sm:text-3xl">
           {t(ui.notFoundTitle)}
