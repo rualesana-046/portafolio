@@ -9,6 +9,13 @@ const config: Config = {
     "./providers/**/*.{ts,tsx}",
   ],
   theme: {
+    screens: {
+      sm: "40em",
+      md: "48em",
+      lg: "64em",
+      xl: "80em",
+      "2xl": "96em",
+    },
     extend: {
       colors: {
         dark: {

@@ -16,7 +16,7 @@ import { cn } from "@/lib/cn";
 import type { SectionId } from "@/types/navigation";
 
 const MOBILE_MENU_ID = "mobile-navigation";
-const DESKTOP_QUERY = "(min-width: 1024px)";
+const DESKTOP_QUERY = "(min-width: 64em)";
 const sectionIds: readonly SectionId[] = navigation.map((item) => item.id);
 
 interface NavigationLinksProps {

@@ -102,7 +102,7 @@
   color-scheme: dark;
 }
 
-@media (max-width: 639px) {
+@media (max-width: 39.9375em) {
   :root {
     --letter-burn: 3px;
   }
@@ -821,13 +821,13 @@ html:not(.js) .folder-art {
   padding: 10px 4px 12px;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 40em) {
   .folder-polaroids {
     grid-template-columns: repeat(2, minmax(0, 15rem));
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .folder-content {
     padding-top: 22px;
   }
@@ -949,7 +949,7 @@ html:not(.js) .folder-content {
   mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0) 35%, rgb(0 0 0) 88%, transparent 100%);
 }
 
-@media (max-width: 639px) {
+@media (max-width: 39.9375em) {
   .hero-scene {
     mask-image: linear-gradient(
       to bottom,
@@ -1075,31 +1075,31 @@ html:not(.js) .folder-content {
   width: calc(var(--frame-d) * var(--portrait-scale) * var(--photo-ratio));
 }
 
-@media (min-width: 640px) {
+@media (min-width: 40em) {
   .portrait-slot {
     --frame-d: 344px;
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 47.9375em) {
   .portrait-slot {
     margin-bottom: max(0px, calc(var(--frame-d) * var(--portrait-scale) * (1 - var(--photo-ratio)) / 2 - 32px));
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .portrait-slot {
     --frame-d: 320px;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64em) {
   .portrait-slot {
     --frame-d: 412px;
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 80em) {
   .portrait-slot {
     --frame-d: 432px;
   }
@@ -1225,7 +1225,7 @@ html:not(.js) .folder-content {
   animation-delay: -1.1s;
 }
 
-@media (max-width: 639px) {
+@media (max-width: 39.9375em) {
   .sunmoon-breathe,
   .sunmoon-star[data-pattern] {
     animation-name: none;

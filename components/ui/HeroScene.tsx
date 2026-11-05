@@ -5,7 +5,7 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { heroScenes } from "@/data/hero";
 import { useTheme } from "@/hooks/useTheme";
 
-const TALL_QUERY = "(max-width: 639px)";
+const TALL_QUERY = "(max-width: 39.9375em)";
 const MAX_DENSITY = 1.5;
 
 function subscribeToTallQuery(onChange: () => void) {
