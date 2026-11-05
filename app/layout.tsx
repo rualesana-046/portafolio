@@ -40,6 +40,10 @@ export const metadata: Metadata = {
     description,
   },
   twitter: { card: siteMetadata.twitterCard, title, description },
+  icons: {
+    icon: { url: siteMetadata.faviconPath, type: siteMetadata.faviconType },
+    apple: `${siteMetadata.appIconRoute}/${siteMetadata.appleIconSize}`,
+  },
   robots: shouldIndex(siteMetadata.isIndexable, process.env.VERCEL_ENV)
     ? { index: true, follow: true }
     : { index: false, follow: false },

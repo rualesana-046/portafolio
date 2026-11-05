@@ -14,4 +14,12 @@ export const siteMetadata: SiteMetadata = {
   twitterCard: "summary_large_image",
   canonicalPath: "/",
   isIndexable: false,
+  shortName: "Portafolio",
+  display: "standalone",
+  backgroundColor: "#EDE9D8",
+  faviconPath: "/icon.svg",
+  faviconType: "image/svg+xml",
+  appIconRoute: "/icon",
+  appIconSizes: [180, 192, 512],
+  appleIconSize: 180,
 };
