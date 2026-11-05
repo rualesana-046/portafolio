@@ -128,6 +128,7 @@ export function Contact() {
                   multiline
                   help={fillTemplate(t(ui.messageHelp), { min: MESSAGE_MIN_LENGTH, max: MESSAGE_MAX_LENGTH })}
                   counter={fillTemplate(t(ui.messageCounter), { count: messageLength, max: MESSAGE_MAX_LENGTH })}
+                  remaining={fillTemplate(t(ui.messageRemaining), { count: Math.max(0, MESSAGE_MAX_LENGTH - messageLength) })}
                   isCounterOver={messageLength > MESSAGE_MAX_LENGTH}
                 />
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center">

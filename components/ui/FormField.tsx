@@ -12,6 +12,7 @@ interface FormFieldProps {
   readonly error?: string;
   readonly help?: string;
   readonly counter?: string;
+  readonly remaining?: string;
   readonly isCounterOver?: boolean;
   readonly multiline?: boolean;
   readonly type?: "text" | "email";
@@ -33,6 +34,7 @@ export function FormField({
   error,
   help,
   counter,
+  remaining,
   isCounterOver = false,
   multiline = false,
   type = "text",
@@ -44,7 +46,8 @@ export function FormField({
 }: FormFieldProps) {
   const helpId = `${id}-help`;
   const errorId = `${id}-error`;
-  const describedBy = [help && helpId, error && errorId].filter(Boolean).join(" ") || undefined;
+  const remainingId = `${id}-remaining`;
+  const describedBy = [help && helpId, remaining && remainingId, error && errorId].filter(Boolean).join(" ") || undefined;
   const sharedProps = {
     id,
     name: id,
@@ -75,6 +78,11 @@ export function FormField({
           {counter && (
             <span aria-hidden="true" className={cn("ml-auto tabular-nums", isCounterOver && "text-letter-danger")}>
               {counter}
+            </span>
+          )}
+          {remaining && (
+            <span id={remainingId} className="sr-only">
+              {remaining}
             </span>
           )}
         </div>

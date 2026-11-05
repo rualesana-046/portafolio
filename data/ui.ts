@@ -45,6 +45,7 @@ export const ui = {
   subjectHelp: { es: "Hasta {max} caracteres.", en: "Up to {max} characters." },
   messageHelp: { es: "Entre {min} y {max} caracteres.", en: "Between {min} and {max} characters." },
   messageCounter: { es: "{count} / {max}", en: "{count} / {max}" },
+  messageRemaining: { es: "Quedan {count} caracteres.", en: "{count} characters remaining." },
   allFieldsRequired: { es: "Todos los campos son obligatorios.", en: "All fields are required." },
   formHasErrors: {
     es: "Revisa los campos marcados antes de sellar la carta.",
