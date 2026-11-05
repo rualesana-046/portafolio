@@ -13,7 +13,7 @@ export default function HomePage() {
   return (
     <>
       <Navbar />
-      <main id={CONTENT_ID}>
+      <main id={CONTENT_ID} tabIndex={-1}>
         <Hero />
         <About />
         <Projects />

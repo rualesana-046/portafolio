@@ -121,6 +121,10 @@
     @apply bg-canvas font-body text-ink antialiased;
   }
 
+  main:focus {
+    outline: none;
+  }
+
   body::before,
   body::after {
     content: "";
