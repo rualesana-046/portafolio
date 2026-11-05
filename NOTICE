@@ -1,0 +1,34 @@
+AVISO DE LICENCIAS
+
+La licencia MIT del archivo LICENSE cubre solo el código fuente: app/, components/,
+hooks/, lib/, providers/, types/, scripts/ y los archivos de configuración.
+
+Todos los derechos reservados:
+- El contenido y los datos personales de data/.
+- Las fotos y el CV de public/images, salvo las ilustraciones y los fondos del Hero.
+- El nombre, la imagen y el CV de la autora. No se concede permiso para usarlos.
+
+Conservan su licencia original:
+- Los logos de public/logos (Simple Icons, CC0 1.0; Devicon, MIT), con sus archivos
+  de licencia en esa misma carpeta.
+- Las tipografías: UnifrakturCook, de j. «mach» wust y Peter Wiegel (SIL Open Font
+  License 1.1), cuyos contornos se convirtieron a SVG para el sello; Grenze Gotisch y
+  Newsreader, de Google Fonts (SIL Open Font License 1.1).
+
+Se rigen por los términos de uso de su proveedor:
+- Las ilustraciones de public/images/illustrations (la lechuza y los grabados y
+  estampillas de especímenes) y los fondos del Hero de public/images/hero, generados
+  con Gemini, de Google. Sus términos pueden consultarse en el sitio de Google. No
+  están cubiertos por la licencia MIT.
+
+---
+
+LICENSE NOTICE (short English version)
+
+The MIT License in LICENSE covers the source code only. The content and personal data
+in data/, the photos and CV in public/images (except the illustrations and Hero
+backgrounds), and the author's name, image and CV are all rights reserved; no
+permission is granted to use them. The logos in public/logos and the fonts keep their
+original licenses. The illustrations in public/images/illustrations and the Hero
+backgrounds in public/images/hero were generated with Google's Gemini and are subject
+to the provider's terms of use, not to the MIT License.
