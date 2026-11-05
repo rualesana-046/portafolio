@@ -7,4 +7,5 @@ export interface SiteMetadata {
   readonly openGraphLocale: string;
   readonly twitterCard: "summary_large_image";
   readonly canonicalPath: string;
+  readonly isIndexable: boolean;
 }

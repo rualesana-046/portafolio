@@ -13,4 +13,5 @@ export const siteMetadata: SiteMetadata = {
   openGraphLocale: "es_ES",
   twitterCard: "summary_large_image",
   canonicalPath: "/",
+  isIndexable: false,
 };
