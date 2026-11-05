@@ -9,4 +9,8 @@ export const siteMetadata: SiteMetadata = {
     es: "Descripción de ejemplo del portafolio, pendiente de reemplazar por el contenido real.",
     en: "Sample portfolio description, pending replacement with the real content.",
   },
+  openGraphType: "profile",
+  openGraphLocale: "es_ES",
+  twitterCard: "summary_large_image",
+  canonicalPath: "/",
 };

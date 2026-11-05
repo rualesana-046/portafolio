@@ -4,6 +4,7 @@ import { Grenze_Gotisch, Newsreader } from "next/font/google";
 import { siteMetadata } from "@/data/site";
 import { cn } from "@/lib/cn";
 import { DEFAULT_LOCALE, localeInitScript } from "@/lib/i18n";
+import { resolveSiteUrl } from "@/lib/site-url";
 import { themeInitScript } from "@/lib/theme";
 import { LocaleProvider } from "@/providers/LocaleProvider";
 import { MotionProvider } from "@/providers/MotionProvider";
@@ -23,8 +24,25 @@ const newsreader = Newsreader({
   display: "swap",
 });
 
+const title = siteMetadata.title[DEFAULT_LOCALE];
+const description = siteMetadata.description[DEFAULT_LOCALE];
+
 export const metadata: Metadata = {
-  description: siteMetadata.description[DEFAULT_LOCALE],
+  metadataBase: resolveSiteUrl({
+    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
+    VERCEL_PROJECT_PRODUCTION_URL: process.env.VERCEL_PROJECT_PRODUCTION_URL,
+  }),
+  title,
+  description,
+  alternates: { canonical: siteMetadata.canonicalPath },
+  openGraph: {
+    type: siteMetadata.openGraphType,
+    locale: siteMetadata.openGraphLocale,
+    url: siteMetadata.canonicalPath,
+    title,
+    description,
+  },
+  twitter: { card: siteMetadata.twitterCard, title, description },
 };
 
 interface RootLayoutProps {

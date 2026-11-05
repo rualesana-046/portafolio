@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useMemo, type ReactNode } from "react";
+import { createContext, useCallback, useEffect, useMemo, type ReactNode } from "react";
 import { useDocumentAttribute } from "@/hooks/useDocumentAttribute";
 import { writeStorage } from "@/lib/dom";
 import {
@@ -36,6 +36,20 @@ export function LocaleProvider({ children, documentTitle }: LocaleProviderProps)
     writeStorage(LOCALE_STORAGE_KEY, nextLocale);
   }, []);
 
+  const title = documentTitle[locale];
+
+  useEffect(() => {
+    const applyTitle = () => {
+      if (document.title !== title) {
+        document.title = title;
+      }
+    };
+    applyTitle();
+    const observer = new MutationObserver(applyTitle);
+    observer.observe(document.head, { childList: true, subtree: true, characterData: true });
+    return () => observer.disconnect();
+  }, [title]);
+
   const value = useMemo(
     () => ({ locale, isHydrated, setLocale }),
     [locale, isHydrated, setLocale],
@@ -43,7 +57,6 @@ export function LocaleProvider({ children, documentTitle }: LocaleProviderProps)
 
   return (
     <LocaleContext value={value}>
-      <title>{documentTitle[locale]}</title>
       {children}
     </LocaleContext>
   );
