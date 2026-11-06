@@ -26,7 +26,7 @@ Portafolio de una sola página con estética de archivo naturalista: el jurament
 
 ## Requisitos
 
-- Node.js 20.9 o superior (`engines` en `package.json`); el proyecto usa Node 24 (`.nvmrc`).
+- Node.js 24 (`engines` en `package.json` y `.nvmrc`).
 - npm.
 - Variables de entorno, todas opcionales:
   - `NEXT_PUBLIC_SITE_URL`: URL pública del sitio. Si existe, tiene prioridad.
