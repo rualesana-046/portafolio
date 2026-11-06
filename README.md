@@ -90,7 +90,7 @@ La página se genera como HTML estático. Las fuentes se cargan con `next/font` 
 
 **Tipografías**
 - UnifrakturCook, de j. «mach» wust y Peter Wiegel, bajo SIL Open Font License 1.1. Los contornos de la «A» y la «M» del sello se convirtieron a trazados SVG.
-- Grenze Gotisch y Newsreader, de Google Fonts, bajo SIL Open Font License 1.1, cargadas con `next/font`.
+- Grenze Gotisch (The Grenze Gotisch Project Authors) y Newsreader (The Newsreader Project Authors), de Google Fonts, bajo SIL Open Font License 1.1, cargadas con `next/font`.
 
 **Iconos**
 - Simple Icons, bajo CC0 1.0: [`public/logos/tech/LICENSE.md`](public/logos/tech/LICENSE.md) y [`public/logos/social/LICENSE-simple-icons.md`](public/logos/social/LICENSE-simple-icons.md).
