@@ -9,8 +9,8 @@ export const testimonials: readonly Testimonial[] = [
       en: "Mechatronics engineer and front-end developer",
     },
     quote: {
-      es: "Aprecio su interés por desarrollar soluciones que no solo cumplan su propósito, sino que además sean agradables y fáciles de usar. Valoro su atención al detalle, su creatividad y sus aportes durante el desarrollo de una plataforma que construimos en conjunto.",
-      en: "I appreciate her interest in developing solutions that not only fulfill their purpose but are also pleasant and easy to use. I value her attention to detail, her creativity and her contributions during the development of a platform we built together.",
+      es: "Aprecio su interés por desarrollar soluciones que no solo cumplan su propósito, sino que además sean agradables y fáciles de usar. Reconozco su atención al detalle, su creatividad y sus aportes durante el desarrollo de una plataforma que construimos en conjunto.",
+      en: "I appreciate her interest in developing solutions that not only fulfill their purpose but are also pleasant and easy to use. I recognize her attention to detail, her creativity and her contributions during the development of a platform we built together.",
     },
   },
   {
