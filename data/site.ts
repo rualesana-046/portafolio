@@ -2,19 +2,19 @@ import type { SiteMetadata } from "@/types/site";
 
 export const siteMetadata: SiteMetadata = {
   title: {
-    es: "Nombre de ejemplo · Portafolio de ejemplo",
-    en: "Sample Name · Sample Portfolio",
+    es: "Ana María Ruales · Portafolio",
+    en: "Ana María Ruales · Portfolio",
   },
   description: {
-    es: "Descripción de ejemplo del portafolio, pendiente de reemplazar por el contenido real.",
-    en: "Sample portfolio description, pending replacement with the real content.",
+    es: "Portafolio de Ana María Ruales, desarrolladora full stack. Proyectos que abarcan el análisis de requisitos, el diseño, el desarrollo y el despliegue.",
+    en: "Portfolio of Ana María Ruales, full stack developer. Projects spanning requirements analysis, design, development and deployment.",
   },
   openGraphType: "profile",
   openGraphLocale: "es_ES",
   twitterCard: "summary_large_image",
   canonicalPath: "/",
   isIndexable: false,
-  shortName: "Portafolio",
+  shortName: "Ana María",
   display: "standalone",
   backgroundColor: "#EDE9D8",
   faviconPath: "/icon.svg",
