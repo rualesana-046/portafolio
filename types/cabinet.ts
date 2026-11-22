@@ -18,6 +18,7 @@ export interface FolderShelf {
 export interface CabinetFolder {
   readonly id: CabinetFolderId;
   readonly label: Localized;
+  readonly description?: Localized;
   readonly stamp: FolderStampArt;
   readonly shelf?: FolderShelf;
 }

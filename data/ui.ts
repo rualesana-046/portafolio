@@ -31,6 +31,7 @@ export const ui = {
   closeProjectDetails: { es: "Cerrar detalle del proyecto", en: "Close project details" },
   folderTools: { es: "Herramientas", en: "Tools" },
   folderReadings: { es: "Lecturas", en: "Readings" },
+  folderReadingsNote: { es: "Algunas de mis favoritas", en: "Some of my favorites" },
   folderHobbies: { es: "Pasatiempos", en: "Pastimes" },
   stampTools: { es: "Oficio", en: "Craft" },
   stampReadings: { es: "Lectura", en: "Reading" },

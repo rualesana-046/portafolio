@@ -46,24 +46,31 @@ export function Skills() {
 
     const { kind, prints } = folder.shelf;
     return (
-      <ul className="folder-polaroids">
-        {interests
-          .filter((interest) => interest.kind === kind)
-          .map((interest, position) => (
-            <li key={interest.id}>
-              <Polaroid
-                title={t(interest.title)}
-                description={t(interest.description)}
-                print={pickCyclic(prints, position)}
-                tilt={pickCyclic(polaroidTilts, index * POLAROID_TILT_STEP + position)}
-                photo={interest.image && { ...interest.image, alt: t(interest.image.alt) }}
-                showPhoto={isVisited}
-                link={interest.link}
-                newTabLabel={t(ui.opensInNewTab)}
-              />
-            </li>
-          ))}
-      </ul>
+      <>
+        {folder.description && (
+          <p className="folder-note px-1 pb-2 pt-1 text-center text-sm italic text-letter-muted">
+            {t(folder.description)}
+          </p>
+        )}
+        <ul className="folder-polaroids">
+          {interests
+            .filter((interest) => interest.kind === kind)
+            .map((interest, position) => (
+              <li key={interest.id}>
+                <Polaroid
+                  title={t(interest.title)}
+                  description={t(interest.description)}
+                  print={pickCyclic(prints, position)}
+                  tilt={pickCyclic(polaroidTilts, index * POLAROID_TILT_STEP + position)}
+                  photo={interest.image && { ...interest.image, alt: t(interest.image.alt) }}
+                  showPhoto={isVisited}
+                  link={interest.link}
+                  newTabLabel={t(ui.opensInNewTab)}
+                />
+              </li>
+            ))}
+        </ul>
+      </>
     );
   };
 

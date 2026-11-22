@@ -833,6 +833,7 @@ html:not(.js) .folder-art {
   }
 
   .folder-polaroids,
+  .folder-note,
   .folder-groups > :nth-child(2) {
     margin-right: var(--stamp-reserve);
   }

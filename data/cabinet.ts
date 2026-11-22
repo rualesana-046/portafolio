@@ -6,6 +6,7 @@ export const cabinetFolders: readonly CabinetFolder[] = [
   {
     id: "readings",
     label: ui.folderReadings,
+    description: ui.folderReadingsNote,
     stamp: { illustration: illustrations.fernStamp, caption: ui.stampReadings, tilt: 0 },
     shelf: { kind: "book", prints: [illustrations.keyPrint, illustrations.mothPrint] },
   },
