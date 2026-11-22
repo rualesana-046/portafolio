@@ -1,16 +1,20 @@
 # Portafolio personal
 
-> **English summary.** Personal portfolio built with Next.js 16, React 19, TypeScript and Tailwind CSS. It is a single static page in Spanish with an optional English view, two themes (light “Alba” and dark “Ocaso”) and an illustrated naturalist-archive style. The site currently shows sample content and is marked `noindex` until the real content is published. The source code is MIT-licensed; personal content, photos and the CV are not, and the illustrations are subject to their provider’s terms. See [`NOTICE`](NOTICE) and the “Licencia” section for details.
+> **English summary.** Personal portfolio built with Next.js 16, React 19, TypeScript and Tailwind CSS. It is a single static page in Spanish with an optional English view, two themes (light “Alba” and dark “Ocaso”) and an illustrated naturalist-archive style. It is served with `noindex` until it is published. The source code is MIT-licensed; personal content, photos and the CV are not, and the illustrations are subject to their provider’s terms. See [`NOTICE`](NOTICE) and the “Licencia” section for details.
 
 ## Descripción
 
-Portafolio de una sola página con estética de archivo naturalista: el juramento del desarrollador como presentación, un cuaderno de campo, el scriptorium de proyectos, el concilio de mentores en pergaminos, el mapa de trayectoria, una carta sellada para el contacto y un herbario de herramientas en forma de archivador. Tiene dos temas, Alba (claro) y Ocaso (oscuro), y dos idiomas, español e inglés, que el visitante elige desde la cabecera.
+Portafolio de una sola página con estética de archivo naturalista: una presentación con el sol y la luna, un cuaderno de campo con la foto y las habilidades, el scriptorium de proyectos con una ventana de detalle por proyecto, los testimonios en pergaminos, el mapa de trayectoria con educación y experiencia, una carta sellada para el contacto y un archivador de tres carpetas (herramientas, pasatiempos y lecturas). Tiene dos temas, Alba (claro) y Ocaso (oscuro), y dos idiomas, español e inglés, que el visitante elige desde la cabecera.
 
-## Estado
+## Secciones
 
-- Contenido de ejemplo: los textos, la foto, los proyectos y los enlaces son provisionales hasta la entrega final.
-- Mientras tanto, el sitio se sirve con `noindex, nofollow` (`isIndexable: false` en `data/site.ts`).
-- El archivo `public/cv.pdf` todavía no existe.
+- **Presentación:** nombre, titular y resumen, con la escena del sol y la luna.
+- **Sobre mí:** foto, párrafo y habilidades.
+- **Proyectos:** filtros por tipo y tarjetas con nombre, tipo, descripción y tecnologías. Cada tarjeta abre una ventana con funciones, participación, aviso (si aplica) y enlaces (si existen).
+- **Testimonios:** pergaminos con la cita, el nombre y el cargo.
+- **Trayectoria:** educación y experiencia con su período.
+- **Archivador:** tres carpetas: herramientas, pasatiempos y lecturas.
+- **Contacto:** formulario con validación y carta sellada.
 
 ## Stack
 
@@ -65,6 +69,7 @@ scripts/      Comprobaciones del proyecto
 - **Temas e idioma:** se aplican antes de pintar la página para evitar parpadeos; la elección se guarda en el navegador.
 - **Movimiento reducido:** con `prefers-reduced-motion` se detienen las animaciones, el sobre se abre al instante y las carpetas cambian sin transición.
 - **Sin JavaScript:** la carta de contacto y las carpetas del archivador se muestran abiertas y legibles.
+- **Ventana de detalle:** usa el elemento nativo `<dialog>` con `showModal()`. El fondo queda inerte, el foco entra en la ventana y vuelve a la tarjeta al cerrar, se cierra con el botón, con Escape o al pulsar fuera, y la página no se desplaza mientras está abierta. Sin JavaScript, el detalle de cada proyecto se muestra dentro de su tarjeta.
 - **Teclado:** enlace «Saltar al contenido», foco visible en todos los controles, menú móvil que se cierra con Escape y sobre que se abre con Intro.
 - **Lectores de pantalla:** decoración oculta con `aria-hidden`; carpetas con `aria-expanded` y `aria-controls`; formulario con etiquetas, errores asociados y estado anunciado.
 - **Contraste AA** en los dos temas, medido sobre los fondos reales.
@@ -73,7 +78,7 @@ scripts/      Comprobaciones del proyecto
 
 ## Rendimiento
 
-Medido en un build local el 5 de noviembre de 2026, con Lighthouse (5 pasadas, mediana):
+Medido en un build local el 22 de noviembre de 2026, con Lighthouse (5 pasadas, mediana):
 
 | Categoría | Móvil | Escritorio |
 |---|---|---|
@@ -82,7 +87,7 @@ Medido en un build local el 5 de noviembre de 2026, con Lighthouse (5 pasadas, m
 | Buenas prácticas | 100 | 100 |
 | SEO | 69* | 69* |
 
-\* El SEO baja únicamente por el `noindex` intencionado mientras el contenido sea de ejemplo; sin él, la puntuación es 100.
+\* El SEO baja únicamente por el `noindex` intencionado (`isIndexable: false` en `data/site.ts`); sin él, la puntuación es 100.
 
 La página se genera como HTML estático. Las fuentes se cargan con `next/font` y las imágenes con `next/image`. El CLS es 0.
 
