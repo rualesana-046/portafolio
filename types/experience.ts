@@ -18,7 +18,7 @@ export interface ExperienceEntry {
 export interface EducationEntry {
   readonly id: string;
   readonly title: Localized;
-  readonly institution: string;
+  readonly institution: Localized;
   readonly period: Period;
   readonly description?: Localized;
   readonly credentialUrl?: string;

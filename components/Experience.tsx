@@ -25,11 +25,18 @@ function PeriodLabel({ period }: { readonly period: Period }) {
   const { locale } = useLocale();
   const t = useLocalized();
   const formatted = formatPeriod(period, locale, t(ui.present));
+  const isSinglePoint = period.end === period.start;
 
   return (
     <p className="text-sm font-semibold uppercase tracking-[0.15em] text-accent-strong">
-      <time dateTime={period.start}>{formatted.start}</time> {t(ui.periodSeparator)}{" "}
-      {period.end === null ? formatted.end : <time dateTime={period.end}>{formatted.end}</time>}
+      <time dateTime={period.start}>{formatted.start}</time>
+      {!isSinglePoint && (
+        <>
+          {" "}
+          {t(ui.periodSeparator)}{" "}
+          {period.end === null ? formatted.end : <time dateTime={period.end}>{formatted.end}</time>}
+        </>
+      )}
     </p>
   );
 }
@@ -115,7 +122,7 @@ function EducationItem({ entry }: { readonly entry: EducationEntry }) {
     <>
       <PeriodLabel period={entry.period} />
       <h4 className="mt-2 text-xl font-semibold text-ink">{t(entry.title)}</h4>
-      <p className="text-muted">{entry.institution}</p>
+      <p className="text-muted">{t(entry.institution)}</p>
       {entry.description && <p className="mt-3 text-ink">{t(entry.description)}</p>}
       {credentialUrl && (
         <a
@@ -161,7 +168,11 @@ export function Experience() {
   return (
     <Section id="experience" heading={sections.experience}>
       <div className="grid gap-16 lg:grid-cols-2 lg:gap-12">
-        <Timeline title={ui.academicBackground} icon={GraduationCap} footer={<LanguageList />}>
+        <Timeline
+          title={ui.academicBackground}
+          icon={GraduationCap}
+          footer={languageProficiencies.length > 0 ? <LanguageList /> : undefined}
+        >
           {education.map((entry, index) => (
             <TimelineItem key={entry.id} index={index}>
               <EducationItem entry={entry} />

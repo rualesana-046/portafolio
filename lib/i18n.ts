@@ -17,6 +17,7 @@ export function localeFromRoot(root: HTMLElement): Locale {
 export const localeInitScript = `try{var l=localStorage.getItem(${JSON.stringify(LOCALE_STORAGE_KEY)});if(${JSON.stringify(LOCALES)}.indexOf(l)>-1)document.documentElement.lang=l}catch(e){}`;
 
 const MONTH_PATTERN = /^(\d{4})-(0[1-9]|1[0-2])$/;
+const YEAR_PATTERN = /^\d{4}$/;
 
 export function localize<T>(value: Localized<T>, locale: Locale): T {
   return value[locale];
@@ -40,10 +41,14 @@ export interface FormattedPeriod {
   readonly end: string;
 }
 
+function formatPeriodPoint(value: string, locale: Locale): string {
+  return YEAR_PATTERN.test(value) ? value : formatMonth(value, locale);
+}
+
 export function formatPeriod(period: Period, locale: Locale, presentLabel: string): FormattedPeriod {
   return {
-    start: formatMonth(period.start, locale),
-    end: period.end === null ? presentLabel : formatMonth(period.end, locale),
+    start: formatPeriodPoint(period.start, locale),
+    end: period.end === null ? presentLabel : formatPeriodPoint(period.end, locale),
   };
 }
 
