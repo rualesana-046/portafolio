@@ -1105,6 +1105,31 @@ html:not(.js) .folder-content {
   }
 }
 
+html:has(.project-dialog[open]) {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
+
+html:not(.js) .project-dialog {
+  display: block;
+  position: static;
+  width: auto;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  overflow: visible;
+  border: 0;
+  border-top: 1px solid rgb(var(--line) / 0.4);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+html:not(.js) .project-dialog-bar,
+html:not(.js) .project-dialog-repeat {
+  display: none;
+}
+
 .photo-frame {
   padding: 3px;
   border-radius: 0.875rem;

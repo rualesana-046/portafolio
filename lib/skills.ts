@@ -1,3 +1,5 @@
+import type { Localized } from "@/types/i18n";
+import type { ProjectTechnology } from "@/types/project";
 import type { Skill, SkillCategory } from "@/types/skill";
 
 export type SkillIndex = ReadonlyMap<string, Skill>;
@@ -20,6 +22,26 @@ export function resolveSkills(ids: readonly string[], index: SkillIndex): readon
       throw new Error(`Unknown skill id "${id}"`);
     }
     return skill;
+  });
+}
+
+export type ResolvedTechnology =
+  | { readonly kind: "skill"; readonly skill: Skill }
+  | { readonly kind: "label"; readonly label: Localized };
+
+export function resolveTechnologies(
+  technologies: readonly ProjectTechnology[],
+  index: SkillIndex,
+): readonly ResolvedTechnology[] {
+  return technologies.map((technology): ResolvedTechnology => {
+    if (typeof technology !== "string") {
+      return { kind: "label", label: technology };
+    }
+    const [skill] = resolveSkills([technology], index);
+    if (!skill) {
+      throw new Error(`Unknown skill id "${technology}"`);
+    }
+    return { kind: "skill", skill };
   });
 }
 

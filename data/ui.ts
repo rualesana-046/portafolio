@@ -25,6 +25,10 @@ export const ui = {
   filterProjects: { es: "Filtrar proyectos por tipo", en: "Filter projects by type" },
   visibleItems: { es: "Elementos visibles", en: "Visible items" },
   projectLinks: { es: "Enlaces del proyecto", en: "Project links" },
+  projectFeatures: { es: "Funciones", en: "Features" },
+  projectParticipation: { es: "Participación", en: "Participation" },
+  projectNotice: { es: "Aviso", en: "Notice" },
+  closeProjectDetails: { es: "Cerrar detalle del proyecto", en: "Close project details" },
   folderTools: { es: "Herramientas", en: "Tools" },
   folderReadings: { es: "Lecturas", en: "Readings" },
   folderHobbies: { es: "Pasatiempos", en: "Pastimes" },
@@ -107,6 +111,15 @@ export const formStatusMessages = {
 } as const satisfies Record<Exclude<ContactFormStatus, "idle">, Localized>;
 
 export const projectKindLabels = {
+  desktop: { es: "Aplicación de escritorio multiplataforma", en: "Cross-platform desktop application" },
+  mobile: { es: "Aplicación móvil Android", en: "Android mobile application" },
+  smartwatch: { es: "Aplicación para smartwatch (Wear OS)", en: "Smartwatch application (Wear OS)" },
+  game: { es: "Videojuego 2D narrativo", en: "2D narrative video game" },
+  web: { es: "Aplicación web", en: "Web application" },
+  personal: { es: "Personal", en: "Personal" },
+} as const satisfies Record<ProjectKind, Localized>;
+
+export const projectFilterLabels = {
   desktop: { es: "Escritorio", en: "Desktop" },
   mobile: { es: "Móvil", en: "Mobile" },
   smartwatch: { es: "Smartwatch", en: "Smartwatch" },

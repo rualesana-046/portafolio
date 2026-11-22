@@ -23,6 +23,10 @@ export function localize<T>(value: Localized<T>, locale: Locale): T {
   return value[locale];
 }
 
+export function sameInEveryLocale(value: string): Localized {
+  return { es: value, en: value };
+}
+
 export function formatMonth(value: string, locale: Locale): string {
   const match = MONTH_PATTERN.exec(value);
   if (!match) {
