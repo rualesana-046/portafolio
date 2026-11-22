@@ -27,7 +27,7 @@ export function FilterChips<K extends string>({
   const t = useLocalized();
 
   return (
-    <div className="mb-10 flex flex-col items-center gap-3">
+    <div className="filter-chips mb-10 flex flex-col items-center gap-3">
       <div role="group" aria-label={t(label)} className="flex flex-wrap justify-center gap-2">
         <button
           type="button"
