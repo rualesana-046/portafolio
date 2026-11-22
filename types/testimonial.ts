@@ -6,8 +6,8 @@ export interface Testimonial {
   readonly id: string;
   readonly author: string;
   readonly role: Localized;
-  readonly organization: string;
-  readonly context: TestimonialContext;
+  readonly organization?: string;
+  readonly context?: TestimonialContext;
   readonly quote: Localized;
   readonly avatar?: string;
 }

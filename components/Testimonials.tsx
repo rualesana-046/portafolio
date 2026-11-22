@@ -57,7 +57,7 @@ function TestimonialQuote({ testimonial }: { readonly testimonial: Testimonial }
         <span className="flex flex-col">
           <span className="font-semibold text-ink">{testimonial.author}</span>
           <span className="text-sm text-muted">{t(testimonial.role)}</span>
-          <span className="text-sm text-muted">{testimonial.organization}</span>
+          {testimonial.organization && <span className="text-sm text-muted">{testimonial.organization}</span>}
         </span>
       </figcaption>
     </>
@@ -66,23 +66,28 @@ function TestimonialQuote({ testimonial }: { readonly testimonial: Testimonial }
 
 function TestimonialScroll({ testimonial, index }: { readonly testimonial: Testimonial; readonly index: number }) {
   const t = useLocalized();
-  const seal = waxSeals[testimonial.context];
-  const SealIcon = seal.icon;
+  const seal = testimonial.context ? waxSeals[testimonial.context] : undefined;
+  const SealIcon = seal?.icon;
 
   return (
     <ParchmentScroll
       tilt={SCROLL_TILTS[index % SCROLL_TILTS.length] ?? 0}
       seal={
-        <span className={cn("wax-seal", seal.className)}>
-          <SealIcon className="h-5 w-5" />
-        </span>
+        seal &&
+        SealIcon && (
+          <span className={cn("wax-seal", seal.className)}>
+            <SealIcon className="h-5 w-5" />
+          </span>
+        )
       }
     >
       <div className="flex items-start justify-between gap-4">
         <Quote aria-hidden="true" className="h-8 w-8 text-accent" />
-        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-strong">
-          {t(testimonialContextLabels[testimonial.context])}
-        </span>
+        {testimonial.context && (
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-strong">
+            {t(testimonialContextLabels[testimonial.context])}
+          </span>
+        )}
       </div>
       <TestimonialQuote testimonial={testimonial} />
     </ParchmentScroll>
