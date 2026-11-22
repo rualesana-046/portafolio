@@ -89,26 +89,31 @@ function TimelineItem({ index, children }: { readonly index: number; readonly ch
 
 function ExperienceItem({ entry }: { readonly entry: ExperienceEntry }) {
   const t = useLocalized();
-  const technologies = resolveSkills(entry.technologies, skillIndex);
+  const technologies = resolveSkills(entry.technologies ?? [], skillIndex);
+  const highlights = entry.highlights ? t(entry.highlights) : [];
 
   return (
     <>
       <PeriodLabel period={entry.period} />
       <h4 className="mt-2 text-xl font-semibold text-ink">{t(entry.role)}</h4>
       <p className="text-muted">{entry.organization}</p>
-      <p className="mt-3 text-ink">{t(entry.description)}</p>
-      <ul className="mt-3 list-disc space-y-1 pl-5 text-ink marker:text-accent">
-        {t(entry.highlights).map((highlight) => (
-          <li key={highlight}>{highlight}</li>
-        ))}
-      </ul>
-      <ul aria-label={t(ui.technologies)} className="mt-4 flex flex-wrap gap-2">
-        {technologies.map((skill) => (
-          <li key={skill.id}>
-            <TechBadge skill={skill} />
-          </li>
-        ))}
-      </ul>
+      {entry.description && <p className="mt-3 text-ink">{t(entry.description)}</p>}
+      {highlights.length > 0 && (
+        <ul className="mt-3 list-disc space-y-1 pl-5 text-ink marker:text-accent">
+          {highlights.map((highlight) => (
+            <li key={highlight}>{highlight}</li>
+          ))}
+        </ul>
+      )}
+      {technologies.length > 0 && (
+        <ul aria-label={t(ui.technologies)} className="mt-4 flex flex-wrap gap-2">
+          {technologies.map((skill) => (
+            <li key={skill.id}>
+              <TechBadge skill={skill} />
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }

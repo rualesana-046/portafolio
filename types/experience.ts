@@ -10,9 +10,9 @@ export interface ExperienceEntry {
   readonly role: Localized;
   readonly organization: string;
   readonly period: Period;
-  readonly description: Localized;
-  readonly highlights: Localized<readonly string[]>;
-  readonly technologies: readonly string[];
+  readonly description?: Localized;
+  readonly highlights?: Localized<readonly string[]>;
+  readonly technologies?: readonly string[];
 }
 
 export interface EducationEntry {
