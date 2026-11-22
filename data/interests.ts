@@ -33,47 +33,62 @@ export const interests: readonly Interest[] = [
       en: "Book fairs, museums and exhibitions",
     },
     description: {
-      es: "Recorrer ferias de libros, museos y exposiciones de arte.",
-      en: "Visiting book fairs, museums and art exhibitions.",
+      es: "Me gusta perderme entre libros, obras y artistas.",
+      en: "I like getting lost among books, artworks and artists.",
     },
   },
   {
     id: "music",
     kind: "hobby",
     title: { es: "Música", en: "Music" },
-    description: { es: "Escuchar música.", en: "Listening to music." },
+    description: {
+      es: "Una buena canción puede cambiarme el día.",
+      en: "A good song can change my day.",
+    },
   },
   {
     id: "documentaries-films",
     kind: "hobby",
     title: { es: "Documentales y películas", en: "Documentaries and films" },
-    description: { es: "Ver documentales y películas.", en: "Watching documentaries and films." },
+    description: {
+      es: "Me gustan las historias bien contadas, reales o de ficción.",
+      en: "I like well-told stories, whether real or fictional.",
+    },
   },
   {
     id: "writing",
     kind: "hobby",
     title: { es: "Escritura", en: "Writing" },
-    description: { es: "Una forma de expresar mis ideas.", en: "A way of expressing my ideas." },
+    description: {
+      es: "Escribo para darle forma a mis ideas.",
+      en: "I write to give shape to my ideas.",
+    },
   },
   {
     id: "painting",
     kind: "hobby",
     title: { es: "Pintura", en: "Painting" },
-    description: { es: "Otra forma de expresar mis ideas.", en: "Another way of expressing my ideas." },
+    description: {
+      es: "Pinto para expresarme sin palabras.",
+      en: "I paint to express myself without words.",
+    },
   },
   {
     id: "board-games-puzzles",
     kind: "hobby",
     title: { es: "Juegos de mesa y rompecabezas", en: "Board games and puzzles" },
-    description: { es: "Los juegos de mesa y los rompecabezas.", en: "Board games and puzzles." },
+    description: {
+      es: "Me divierten los retos: armar, resolver y jugar.",
+      en: "I enjoy a good challenge: putting together, solving and playing.",
+    },
   },
   {
     id: "electronics-software",
     kind: "hobby",
     title: { es: "Electrónica y software", en: "Electronics and software" },
     description: {
-      es: "Explorar proyectos que combinan la electrónica con el software.",
-      en: "Exploring projects that combine electronics with software.",
+      es: "Me gusta ver cómo un circuito y un programa pueden trabajar juntos.",
+      en: "I like seeing how a circuit and a program can work together.",
     },
   },
 ];
