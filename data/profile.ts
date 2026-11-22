@@ -12,8 +12,8 @@ export const profile: Profile = {
   },
   photo: "/images/placeholders/profile-circle.svg",
   photoAlt: {
-    es: "Marcador decorativo en lugar de la fotografía, pendiente de entrega",
-    en: "Decorative placeholder in place of the photograph, pending delivery",
+    es: "Espacio reservado para la foto de perfil",
+    en: "Placeholder for the profile photo",
   },
   cvPath: "/cv.pdf",
 };
