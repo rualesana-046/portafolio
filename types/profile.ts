@@ -9,12 +9,13 @@ export interface Profile {
   readonly cvPath: string;
 }
 
-export interface GalleryImage {
+export interface AboutPhoto {
   readonly src: string;
   readonly alt: Localized;
 }
 
 export interface AboutContent {
-  readonly paragraphs: Localized<readonly string[]>;
-  readonly gallery?: readonly GalleryImage[];
+  readonly paragraph: Localized;
+  readonly skills: readonly Localized[];
+  readonly photo: AboutPhoto;
 }

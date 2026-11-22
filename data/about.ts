@@ -1,17 +1,18 @@
+import { profile } from "@/data/profile";
 import type { AboutContent } from "@/types/profile";
 
 export const about: AboutContent = {
-  paragraphs: {
-    es: [
-      "Párrafo de ejemplo 1. Aquí irá una descripción de la personalidad fuera de la ingeniería.",
-      "Párrafo de ejemplo 2. Aquí irán hobbies, intereses artísticos o deportivos.",
-      "Párrafo de ejemplo 3. Aquí irá lo que motiva el trabajo diario.",
-    ],
-    en: [
-      "Sample paragraph 1. A description of the personality beyond engineering will go here.",
-      "Sample paragraph 2. Hobbies, artistic or sports interests will go here.",
-      "Sample paragraph 3. What drives the daily work will go here.",
-    ],
+  paragraph: {
+    es: "Soy estudiante de Ingeniería de Software, con especial interés en la ingeniería de requisitos, el análisis, el diseño y el desarrollo de software. Me gusta comprender los problemas, explorar posibles soluciones y formar parte de todo el proceso de creación de un producto, teniendo siempre en cuenta las necesidades de las personas que lo utilizarán. Creo que un buen software no solo debe funcionar correctamente, sino también ser útil, intuitivo y ofrecer una buena experiencia a sus usuarios.",
+    en: "I am a Software Engineering student with a special interest in requirements engineering, analysis, design and software development. I like to understand problems, explore possible solutions and be part of the whole process of creating a product, always keeping in mind the needs of the people who will use it. I believe good software must not only work correctly, but also be useful, intuitive and offer a good experience to its users.",
   },
-  gallery: [],
+  skills: [
+    { es: "Ingeniería de requisitos", en: "Requirements engineering" },
+    { es: "Análisis y diseño de software", en: "Software analysis and design" },
+    { es: "Diseño centrado en el usuario", en: "User-centered design" },
+    { es: "Desarrollo full stack", en: "Full stack development" },
+    { es: "APIs REST", en: "REST APIs" },
+    { es: "Despliegue en la nube", en: "Cloud deployment" },
+  ],
+  photo: { src: profile.photo, alt: profile.photoAlt },
 };

@@ -4,72 +4,53 @@ import Image from "next/image";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
+import { TextBadge } from "@/components/ui/TextBadge";
 import { about } from "@/data/about";
 import { sections } from "@/data/sections";
+import { ui } from "@/data/ui";
 import { useLocalized } from "@/hooks/useLocalized";
-import { cn } from "@/lib/cn";
 import { isVectorImage } from "@/lib/media";
-import type { GalleryImage } from "@/types/profile";
 
-interface GalleryPhotoProps {
-  readonly image: GalleryImage;
-  readonly sizes: string;
-}
-
-function GalleryPhoto({ image, sizes }: GalleryPhotoProps) {
+function AboutPhotoFrame() {
   const t = useLocalized();
 
   return (
-    <Image
-      src={image.src}
-      alt={t(image.alt)}
-      width={1200}
-      height={1500}
-      sizes={sizes}
-      unoptimized={isVectorImage(image.src)}
-      className="aspect-[4/5] w-full rounded-xl object-cover ring-1 ring-accent/40"
-    />
+    <div className="photo-frame mx-auto w-full max-w-[14rem] md:max-w-none">
+      <Image
+        src={about.photo.src}
+        alt={t(about.photo.alt)}
+        width={1200}
+        height={1500}
+        sizes="(min-width: 1024px) 18rem, (min-width: 768px) 16rem, 14rem"
+        unoptimized={isVectorImage(about.photo.src)}
+        className="aspect-[4/5] w-full rounded-[0.6875rem] object-cover"
+      />
+    </div>
   );
 }
 
 export function About() {
   const t = useLocalized();
-  const gallery = about.gallery ?? [];
-  const [featured] = gallery;
-  const hasSingleImage = gallery.length === 1 && featured !== undefined;
-  const hasGrid = gallery.length > 1;
 
   return (
     <Section id="about" heading={sections.about}>
       <Reveal>
-        <GlassCard
-          decoration="parchment"
-          className={cn("mx-auto px-8 py-12 sm:p-16", hasSingleImage ? "max-w-5xl" : "max-w-3xl")}
-        >
-          <div className={cn(hasSingleImage && "grid items-center gap-10 md:grid-cols-[1.4fr_1fr]")}>
-            <div className="space-y-5 text-lg leading-relaxed text-ink">
-              {t(about.paragraphs).map((paragraph) => (
-                <p
-                  key={paragraph}
-                  className="first:first-letter:float-left first:first-letter:mr-3 first:first-letter:font-title first:first-letter:text-6xl first:first-letter:leading-none first:first-letter:text-accent-strong"
-                >
-                  {paragraph}
-                </p>
-              ))}
+        <GlassCard decoration="parchment" className="mx-auto max-w-5xl px-6 py-10 sm:p-10 lg:p-14">
+          <div className="grid items-center gap-8 md:grid-cols-[16rem_minmax(0,1fr)] md:gap-10 lg:grid-cols-[18rem_minmax(0,1fr)] lg:gap-12">
+            <AboutPhotoFrame />
+            <div>
+              <p className="text-lg leading-relaxed text-ink first-letter:float-left first-letter:mr-3 first-letter:font-title first-letter:text-6xl first-letter:leading-none first-letter:text-accent-strong">
+                {t(about.paragraph)}
+              </p>
+              <ul aria-label={t(ui.aboutSkills)} className="mt-8 flex flex-wrap gap-2">
+                {about.skills.map((skill) => (
+                  <li key={skill.es}>
+                    <TextBadge label={t(skill)} />
+                  </li>
+                ))}
+              </ul>
             </div>
-            {hasSingleImage && (
-              <GalleryPhoto image={featured} sizes="(min-width: 768px) 22rem, 90vw" />
-            )}
           </div>
-          {hasGrid && (
-            <ul className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
-              {gallery.map((image) => (
-                <li key={image.src}>
-                  <GalleryPhoto image={image} sizes="(min-width: 640px) 14rem, 45vw" />
-                </li>
-              ))}
-            </ul>
-          )}
         </GlassCard>
       </Reveal>
     </Section>
