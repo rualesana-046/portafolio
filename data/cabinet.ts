@@ -16,12 +16,6 @@ export const cabinetFolders: readonly CabinetFolder[] = [
     shelf: { kind: "hobby", prints: [illustrations.fernPrint, illustrations.keyPrint] },
   },
   {
-    id: "creations",
-    label: ui.folderCreations,
-    stamp: { illustration: illustrations.mothStamp, caption: ui.stampCreations, tilt: 0 },
-    shelf: { kind: "creative", prints: [illustrations.wildflowerPrint, illustrations.fernPrint] },
-  },
-  {
     id: "tools",
     label: ui.folderTools,
     stamp: { illustration: illustrations.keyStamp, caption: ui.stampTools, tilt: -45 },

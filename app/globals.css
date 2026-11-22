@@ -609,7 +609,7 @@ html:not(.js) .envelope-letter {
   z-index: 1;
   width: var(--tab-w);
   max-width: 100%;
-  margin-left: calc(var(--tab-index) * (100% - var(--tab-w)) / 3);
+  margin-left: calc(var(--tab-index) * (100% - var(--tab-w)) / var(--tab-span, 3));
   margin-bottom: -1px;
 }
 

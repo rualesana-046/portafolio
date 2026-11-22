@@ -2,7 +2,7 @@ import type { Localized } from "@/types/i18n";
 import type { Illustration } from "@/types/illustration";
 import type { InterestKind } from "@/types/interest";
 
-export type CabinetFolderId = "readings" | "hobbies" | "creations" | "tools";
+export type CabinetFolderId = "readings" | "hobbies" | "tools";
 
 export interface FolderStampArt {
   readonly illustration: Illustration;

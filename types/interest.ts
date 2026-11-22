@@ -1,6 +1,6 @@
 import type { Localized } from "@/types/i18n";
 
-export type InterestKind = "book" | "hobby" | "creative";
+export type InterestKind = "book" | "hobby";
 
 export interface InterestImage {
   readonly src: string;

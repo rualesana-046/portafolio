@@ -2,57 +2,78 @@ import type { Interest } from "@/types/interest";
 
 export const interests: readonly Interest[] = [
   {
-    id: "sample-book-1",
+    id: "pragmatic-programmer",
     kind: "book",
-    title: { es: "Libro de ejemplo 1", en: "Sample book 1" },
-    description: {
-      es: "Por qué recomiendo este libro (texto de ejemplo).",
-      en: "Why I recommend this book (sample text).",
-    },
+    title: { es: "El programador pragmático", en: "The Pragmatic Programmer" },
+    description: { es: "Andrew Hunt y David Thomas", en: "Andrew Hunt and David Thomas" },
   },
   {
-    id: "sample-book-2",
+    id: "leer-es-resistir",
     kind: "book",
-    title: { es: "Libro de ejemplo 2", en: "Sample book 2" },
-    description: {
-      es: "Por qué recomiendo este libro (texto de ejemplo).",
-      en: "Why I recommend this book (sample text).",
-    },
+    title: { es: "Leer es resistir", en: "Leer es resistir" },
+    description: { es: "Mario Mendoza", en: "Mario Mendoza" },
   },
   {
-    id: "sample-hobby-1",
+    id: "maria",
+    kind: "book",
+    title: { es: "María", en: "María" },
+    description: { es: "Jorge Isaacs", en: "Jorge Isaacs" },
+  },
+  {
+    id: "hunger-games",
+    kind: "book",
+    title: { es: "Los juegos del hambre", en: "The Hunger Games" },
+    description: { es: "Suzanne Collins", en: "Suzanne Collins" },
+  },
+  {
+    id: "fairs-museums-exhibitions",
     kind: "hobby",
-    title: { es: "Hobby de ejemplo 1", en: "Sample hobby 1" },
+    title: {
+      es: "Ferias, museos y exposiciones",
+      en: "Book fairs, museums and exhibitions",
+    },
     description: {
-      es: "Descripción de ejemplo de un hobby específico.",
-      en: "Sample description of a specific hobby.",
+      es: "Recorrer ferias de libros, museos y exposiciones de arte.",
+      en: "Visiting book fairs, museums and art exhibitions.",
     },
   },
   {
-    id: "sample-hobby-2",
+    id: "music",
     kind: "hobby",
-    title: { es: "Hobby de ejemplo 2", en: "Sample hobby 2" },
-    description: {
-      es: "Descripción de ejemplo de un hobby específico.",
-      en: "Sample description of a specific hobby.",
-    },
+    title: { es: "Música", en: "Music" },
+    description: { es: "Escuchar música.", en: "Listening to music." },
   },
   {
-    id: "sample-creative-1",
-    kind: "creative",
-    title: { es: "Faceta creativa de ejemplo 1", en: "Sample creative pursuit 1" },
-    description: {
-      es: "Descripción de ejemplo de una trayectoria creativa.",
-      en: "Sample description of a creative pursuit.",
-    },
+    id: "documentaries-films",
+    kind: "hobby",
+    title: { es: "Documentales y películas", en: "Documentaries and films" },
+    description: { es: "Ver documentales y películas.", en: "Watching documentaries and films." },
   },
   {
-    id: "sample-creative-2",
-    kind: "creative",
-    title: { es: "Faceta creativa de ejemplo 2", en: "Sample creative pursuit 2" },
+    id: "writing",
+    kind: "hobby",
+    title: { es: "Escritura", en: "Writing" },
+    description: { es: "Una forma de expresar mis ideas.", en: "A way of expressing my ideas." },
+  },
+  {
+    id: "painting",
+    kind: "hobby",
+    title: { es: "Pintura", en: "Painting" },
+    description: { es: "Otra forma de expresar mis ideas.", en: "Another way of expressing my ideas." },
+  },
+  {
+    id: "board-games-puzzles",
+    kind: "hobby",
+    title: { es: "Juegos de mesa y rompecabezas", en: "Board games and puzzles" },
+    description: { es: "Los juegos de mesa y los rompecabezas.", en: "Board games and puzzles." },
+  },
+  {
+    id: "electronics-software",
+    kind: "hobby",
+    title: { es: "Electrónica y software", en: "Electronics and software" },
     description: {
-      es: "Descripción de ejemplo de una trayectoria creativa.",
-      en: "Sample description of a creative pursuit.",
+      es: "Explorar proyectos que combinan la electrónica con el software.",
+      en: "Exploring projects that combine electronics with software.",
     },
   },
 ];

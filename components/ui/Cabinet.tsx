@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type ReactNode } from "react";
+import { useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { Folder } from "@/components/ui/Folder";
 import { useIsHydrated } from "@/hooks/useDocumentAttribute";
 import { useHoldInPlace } from "@/hooks/useHoldInPlace";
@@ -35,7 +35,11 @@ export function Cabinet({ folders, defaultFolder, renderContent }: CabinetProps)
   };
 
   return (
-    <div ref={cabinetRef} className="cabinet">
+    <div
+      ref={cabinetRef}
+      className="cabinet"
+      style={{ "--tab-span": Math.max(folders.length - 1, 1) } as CSSProperties}
+    >
       {folders.map((folder, index) => {
         const isVisited = visited.has(folder.id);
         return (
