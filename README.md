@@ -20,13 +20,13 @@ Portafolio de una sola página con estética de archivo naturalista: una present
 
 | Pieza | Versión |
 |---|---|
-| Next.js (App Router) | 16.4.3 |
+| Next.js (App Router) | 16.4.6 |
 | React y React DOM | 19.3.1 |
 | TypeScript (modo estricto) | 5.9.3 |
 | Tailwind CSS | 3.4.19 |
 | framer-motion | 14.8.0 |
 | lucide-react | 1.64.0 |
-| ESLint con `eslint-config-next` | 9.39.5 / 16.4.3 |
+| ESLint con `eslint-config-next` | 9.39.5 / 16.4.6 |
 
 ## Requisitos
 
