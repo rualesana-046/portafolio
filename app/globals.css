@@ -907,6 +907,10 @@ html:not(.js) .folder-art {
   filter: sepia(0.15) saturate(0.85) contrast(0.95);
 }
 
+html:not(.js) .project-thumb {
+  display: none;
+}
+
 html:not(.js) .filter-chips {
   display: none;
 }
