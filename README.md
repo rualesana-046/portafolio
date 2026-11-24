@@ -3,7 +3,7 @@
 - Sitio: https://portafolio-ana-maria.vercel.app
 - GitHub: https://github.com/rualesana-046
 
-> **English summary.** Personal portfolio built with Next.js 16, React 19, TypeScript and Tailwind CSS. It is a single static page in Spanish with an optional English view, two themes (light “Alba” and dark “Ocaso”) and an illustrated naturalist-archive style. It is served with `noindex` until it is published. The source code is MIT-licensed; personal content, photos and the CV are not, and the illustrations are subject to their provider’s terms. See [`NOTICE`](NOTICE) and the “Licencia” section for details.
+> **English summary.** Personal portfolio built with Next.js 16, React 19, TypeScript and Tailwind CSS. It is a single static page in Spanish with an optional English view, two themes (light “Alba” and dark “Ocaso”) and an illustrated naturalist-archive style. It is published at https://portafolio-ana-maria.vercel.app and is indexable only in production. The source code is MIT-licensed; personal content, photos and the CV are not, and the illustrations are subject to their provider’s terms. See [`NOTICE`](NOTICE) and the “Licencia” section for details.
 
 ## Descripción
 
