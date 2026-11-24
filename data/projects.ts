@@ -1,8 +1,6 @@
 import { sameInEveryLocale } from "@/lib/i18n";
 import type { Project } from "@/types/project";
 
-const placeholderImage = "/images/placeholders/project.svg";
-
 const individualProject = { es: "Proyecto individual.", en: "Individual project." };
 
 const medicalNotice = {
@@ -43,10 +41,10 @@ export const projects: readonly Project[] = [
       ],
     },
     participation: individualProject,
-    image: placeholderImage,
+    image: "/images/projects/risklex.webp",
     imageAlt: {
-      es: "Marcador de imagen del proyecto RiskLex",
-      en: "Image placeholder for the RiskLex project",
+      es: "Pantalla de RiskLex en escritorio: menú lateral con Analizar, Resultados, Historial y Ajustes, y un cuadro para pegar el texto de los términos o de la política de privacidad, con el botón «Analizar documento».",
+      en: "RiskLex desktop screen: a side menu with Analyze, Results, History and Settings, and a box to paste the text of the terms or privacy policy, with the “Analizar documento” button.",
     },
     links: {
       repository: "https://github.com/rualesana-046/proyecto_risklex",
@@ -82,10 +80,10 @@ export const projects: readonly Project[] = [
     },
     participation: individualProject,
     notice: medicalNotice,
-    image: placeholderImage,
+    image: "/images/projects/glycopulse.webp",
     imageAlt: {
-      es: "Marcador de imagen del proyecto GlycoPulse",
-      en: "Image placeholder for the GlycoPulse project",
+      es: "Tres pantallas de reloj inteligente de GlycoPulse: el botón rojo «Me siento mal», la lista de síntomas «¿Qué sientes?» con «Mareo» marcado y el aviso «Riesgo medio» con recomendaciones.",
+      en: "Three GlycoPulse smartwatch screens: the red “Me siento mal” button, the “¿Qué sientes?” symptom list with “Mareo” checked, and a “Riesgo medio” warning with recommendations.",
     },
     links: {
       repository: "https://github.com/rualesana-046/GlycoPulse",
@@ -119,10 +117,10 @@ export const projects: readonly Project[] = [
       ],
     },
     participation: individualProject,
-    image: placeholderImage,
+    image: "/images/projects/guardian.webp",
     imageAlt: {
-      es: "Marcador de imagen del proyecto El Guardián de las Páginas en Blanco",
-      en: "Image placeholder for the project El Guardián de las Páginas en Blanco",
+      es: "Ilustración en pixel art de una aldea al atardecer, con casas de piedra y madera, una torre con reloj y hojas de papel flotando, bajo el título «El Guardián de las Páginas en Blanco».",
+      en: "Pixel art illustration of a village at dusk, with stone and timber houses, a clock tower and sheets of paper floating in the air, under the title “El Guardián de las Páginas en Blanco”.",
     },
     links: {
       repository: "https://github.com/rualesana-046/Proyecto_videojuego_2D",
@@ -159,10 +157,10 @@ export const projects: readonly Project[] = [
       ],
     },
     participation: individualProject,
-    image: placeholderImage,
+    image: "/images/projects/lenterosa.webp",
     imageAlt: {
-      es: "Marcador de imagen del proyecto Lente Rosa",
-      en: "Image placeholder for the Lente Rosa project",
+      es: "Tres pantallas de Lente Rosa: dos pasos de la introducción, «Cómo se siente un lugar» y «Tu opinión cuida a otras», y un mapa de Pasto con marcadores de valoración.",
+      en: "Three Lente Rosa screens: two onboarding steps, “Cómo se siente un lugar” and “Tu opinión cuida a otras”, and a map of Pasto with rating markers.",
     },
     links: {
       repository: "https://github.com/rualesana-046/proyecto_movil_lenteRosa",
@@ -211,10 +209,10 @@ export const projects: readonly Project[] = [
       en: "Two-person team project. I took part in every stage, with greater involvement in the front end and the hardware implementation.",
     },
     notice: medicalNotice,
-    image: placeholderImage,
+    image: "/images/projects/neurolive.webp",
     imageAlt: {
-      es: "Marcador de imagen del proyecto NeuroLive",
-      en: "Image placeholder for the NeuroLive project",
+      es: "Panel de NeuroLive: editor de texto de una sesión guardada, métricas en tiempo real con pulso de 74 y saturación de oxígeno de 98 %, y temporizador de la sesión activa.",
+      en: "NeuroLive dashboard: a text editor for a saved session, real-time metrics with a pulse of 74 and oxygen saturation of 98%, and the active session timer.",
     },
     links: {},
   },
