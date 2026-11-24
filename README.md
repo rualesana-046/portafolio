@@ -1,5 +1,8 @@
 # Portafolio personal
 
+- Sitio: https://portafolio-ana-maria.vercel.app
+- GitHub: https://github.com/rualesana-046
+
 > **English summary.** Personal portfolio built with Next.js 16, React 19, TypeScript and Tailwind CSS. It is a single static page in Spanish with an optional English view, two themes (light “Alba” and dark “Ocaso”) and an illustrated naturalist-archive style. It is served with `noindex` until it is published. The source code is MIT-licensed; personal content, photos and the CV are not, and the illustrations are subject to their provider’s terms. See [`NOTICE`](NOTICE) and the “Licencia” section for details.
 
 ## Descripción
@@ -78,18 +81,18 @@ scripts/      Comprobaciones del proyecto
 
 ## Rendimiento
 
-Medido en un build local el 22 de noviembre de 2026, con Lighthouse (5 pasadas, mediana):
+Medido el 24 de noviembre de 2026 sobre https://portafolio-ana-maria.vercel.app, con Lighthouse (5 pasadas, mediana):
 
 | Categoría | Móvil | Escritorio |
 |---|---|---|
-| Rendimiento | 87 | 99–100 |
+| Rendimiento | 95 | 99 |
 | Accesibilidad | 100 | 100 |
 | Buenas prácticas | 100 | 100 |
 | SEO | 69* | 69* |
 
 \* El SEO baja únicamente por el `noindex` intencionado (`isIndexable: false` en `data/site.ts`); sin él, la puntuación es 100.
 
-La página se genera como HTML estático. Las fuentes se cargan con `next/font` y las imágenes con `next/image`. El CLS es 0.
+La página se genera como HTML estático. Las fuentes se cargan con `next/font` y las imágenes con `next/image`. CLS 0 en la carga inicial en español.
 
 ## Créditos y licencias de terceros
 
@@ -106,7 +109,7 @@ La página se genera como HTML estático. Las fuentes se cargan con `next/font` 
 
 ## Limitaciones conocidas
 
-- Con 320 px de ancho y la letra del navegador al doble, la cabecera y el Hero no caben en la pantalla.
+- Con 320 px de ancho y la letra del navegador al doble, la cabecera y el Hero no caben en la pantalla; la ventana de detalle de los proyectos sí cabe.
 - Para buscadores y vistas previas en redes sociales, el idioma es solo español; el inglés es una preferencia del visitante, sin una URL propia.
 
 ## Licencia
@@ -114,7 +117,7 @@ La página se genera como HTML estático. Las fuentes se cargan con `next/font` 
 | Qué | Licencia |
 |---|---|
 | El código (`app/`, `components/`, `hooks/`, `lib/`, `providers/`, `types/`, `scripts/` y los archivos de configuración) | MIT, ver [`LICENSE`](LICENSE) |
-| El contenido y los datos personales (`data/`), y las fotos y el CV (`public/images`, salvo las ilustraciones y los fondos del Hero) | Todos los derechos reservados. No se concede permiso para usar el nombre, la imagen ni el CV de la autora |
+| El contenido y los datos personales (`data/`), las fotos (`public/images`, salvo las ilustraciones y los fondos del Hero) y el CV (`public/cv.pdf`) | Todos los derechos reservados. No se concede permiso para usar el nombre, la imagen ni el CV de la autora |
 | Los logos de `public/logos` y las tipografías | Sus licencias originales, indicadas arriba |
 | La lechuza, los grabados y estampillas de especímenes (`public/images/illustrations`) y los fondos del Hero (`public/images/hero`) | Los términos de uso de su proveedor |
 
