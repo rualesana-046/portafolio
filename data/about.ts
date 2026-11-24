@@ -1,4 +1,3 @@
-import { profile } from "@/data/profile";
 import type { AboutContent } from "@/types/profile";
 
 export const about: AboutContent = {
@@ -14,5 +13,11 @@ export const about: AboutContent = {
     { es: "APIs REST", en: "REST APIs" },
     { es: "Despliegue en la nube", en: "Cloud deployment" },
   ],
-  photo: { src: profile.photo, alt: profile.photoAlt },
+  photo: {
+    src: "/images/about.webp",
+    alt: {
+      es: "Ana María Ruales sentada, con camisa negra, sostiene un libro abierto frente a una pared blanca.",
+      en: "Ana María Ruales seated, in a black shirt, holding an open book in front of a white wall.",
+    },
+  },
 };
