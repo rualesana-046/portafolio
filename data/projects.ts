@@ -48,7 +48,9 @@ export const projects: readonly Project[] = [
       es: "Marcador de imagen del proyecto RiskLex",
       en: "Image placeholder for the RiskLex project",
     },
-    links: {},
+    links: {
+      repository: "https://github.com/rualesana-046/proyecto_risklex",
+    },
   },
   {
     id: "glycopulse",
@@ -85,7 +87,9 @@ export const projects: readonly Project[] = [
       es: "Marcador de imagen del proyecto GlycoPulse",
       en: "Image placeholder for the GlycoPulse project",
     },
-    links: {},
+    links: {
+      repository: "https://github.com/rualesana-046/GlycoPulse",
+    },
   },
   {
     id: "blank-pages-guardian",
@@ -120,7 +124,9 @@ export const projects: readonly Project[] = [
       es: "Marcador de imagen del proyecto El Guardián de las Páginas en Blanco",
       en: "Image placeholder for the project El Guardián de las Páginas en Blanco",
     },
-    links: {},
+    links: {
+      repository: "https://github.com/rualesana-046/Proyecto_videojuego_2D",
+    },
   },
   {
     id: "lente-rosa",
@@ -158,7 +164,9 @@ export const projects: readonly Project[] = [
       es: "Marcador de imagen del proyecto Lente Rosa",
       en: "Image placeholder for the Lente Rosa project",
     },
-    links: {},
+    links: {
+      repository: "https://github.com/rualesana-046/proyecto_movil_lenteRosa",
+    },
   },
   {
     id: "neurolive",
