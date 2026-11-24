@@ -48,7 +48,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           )}
         </h3>
         <p className="line-clamp-4 min-h-[4lh] text-muted">{t(project.description)}</p>
-        <TechnologyList technologies={project.technologies} limit={MAX_VISIBLE_TECHNOLOGIES} className="mt-auto pt-2 sm:min-h-[4.75rem]" />
+        <TechnologyList technologies={project.technologies} limit={MAX_VISIBLE_TECHNOLOGIES} className="mt-auto pt-2 sm:min-h-[7.125rem]" />
       </div>
       <ProjectDialog project={project} dialogRef={dialogRef} onClosed={() => openerRef.current?.focus()} />
     </GlassCard>
