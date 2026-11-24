@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Grenze_Gotisch, Newsreader } from "next/font/google";
+import { PersonJsonLd } from "@/components/PersonJsonLd";
 import { siteMetadata } from "@/data/site";
 import { cn } from "@/lib/cn";
 import { DEFAULT_LOCALE, localeInitScript } from "@/lib/i18n";
@@ -64,6 +65,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <script dangerouslySetInnerHTML={{ __html: `${themeInitScript}${localeInitScript}` }} />
       </head>
       <body>
+        <PersonJsonLd />
         <ThemeProvider>
           <LocaleProvider documentTitle={siteMetadata.title}>
             <MotionProvider>{children}</MotionProvider>
