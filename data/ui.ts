@@ -144,6 +144,5 @@ export const testimonialContextLabels = {
 
 export const socialPlatformLabels = {
   email: { es: "Correo electrónico", en: "Email" },
-  linkedin: { es: "LinkedIn", en: "LinkedIn" },
   github: { es: "GitHub", en: "GitHub" },
 } as const satisfies Record<SocialPlatform, Localized>;

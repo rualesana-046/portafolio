@@ -1,6 +1,6 @@
 import type { Localized } from "@/types/i18n";
 
-export type SocialPlatform = "github" | "linkedin" | "email";
+export type SocialPlatform = "github" | "email";
 
 export interface SocialLink {
   readonly id: SocialPlatform;
