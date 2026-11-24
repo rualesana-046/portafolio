@@ -26,11 +26,12 @@ export function Projects() {
         onSelect={setActiveKind}
         visibleCount={visibleItems.length}
       />
-      <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-6">
         <AnimatePresence initial={false}>
           {visibleItems.map((project, index) => (
             <m.li
               key={project.id}
+              className="lg:col-span-2 lg:[&:nth-last-child(2):nth-child(3n+1)]:col-start-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
