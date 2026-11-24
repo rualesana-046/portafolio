@@ -131,9 +131,7 @@ export function ProjectDialog({ project, dialogRef, onClosed }: ProjectDialogPro
                     <Icon aria-hidden="true" className="h-4 w-4" />
                     {t(label)}
                     <span className="sr-only">
-                      {" "}
-                      {t(project.title)}
-                      {isExternal && ` ${t(ui.opensInNewTab)}`}
+                      {` ${t(ui.projectLinkOf)} ${t(project.title)}${isExternal ? ` ${t(ui.opensInNewTab)}` : ""}`}
                     </span>
                   </a>
                 </li>
