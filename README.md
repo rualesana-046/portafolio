@@ -81,16 +81,13 @@ scripts/      Comprobaciones del proyecto
 
 ## Rendimiento
 
-Medido el 24 de noviembre de 2026 sobre https://portafolio-ana-maria.vercel.app, con Lighthouse (5 pasadas, mediana):
+Medido el 24 de noviembre de 2026 sobre el despliegue en Vercel (https://portafolio-ana-maria.vercel.app), con Lighthouse (5 pasadas, mediana):
 
 | Categoría | Móvil | Escritorio |
 |---|---|---|
 | Rendimiento | 95 | 99 |
 | Accesibilidad | 100 | 100 |
 | Buenas prácticas | 100 | 100 |
-| SEO | 69* | 69* |
-
-\* El SEO baja únicamente por el `noindex` intencionado (`isIndexable: false` en `data/site.ts`); sin él, la puntuación es 100.
 
 La página se genera como HTML estático. Las fuentes se cargan con `next/font` y las imágenes con `next/image`. CLS 0 en la carga inicial en español.
 
