@@ -21,6 +21,8 @@ export const ui = {
   viewDemo: { es: "Demo", en: "Demo" },
   downloadProject: { es: "Descargar", en: "Download" },
   technologies: { es: "Tecnologías", en: "Technologies" },
+  moreTechnologies: { es: "y {count} tecnologías más", en: "and {count} more technologies" },
+  moreTechnologiesOne: { es: "y 1 tecnología más", en: "and 1 more technology" },
   aboutSkills: { es: "Habilidades", en: "Skills" },
   filterAll: { es: "Todos", en: "All" },
   filterProjects: { es: "Filtrar proyectos por tipo", en: "Filter projects by type" },

@@ -3,6 +3,7 @@
 import { Code, Download, ExternalLink, TriangleAlert, X, type LucideIcon } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useId, type RefObject } from "react";
+import { TechnologyList } from "@/components/ui/TechnologyList";
 import { projectKindLabels, ui } from "@/data/ui";
 import { useLocalized } from "@/hooks/useLocalized";
 import { isVectorImage } from "@/lib/media";
@@ -103,6 +104,12 @@ export function ProjectDialog({ project, dialogRef, onClosed }: ProjectDialogPro
             {t(ui.projectParticipation)}
           </h4>
           <p className="mt-3 text-ink">{t(project.participation)}</p>
+        </section>
+        <section>
+          <h4 className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-strong">
+            {t(ui.technologies)}
+          </h4>
+          <TechnologyList technologies={project.technologies} className="mt-3" />
         </section>
         {project.notice && (
           <p
