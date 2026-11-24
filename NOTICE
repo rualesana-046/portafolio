@@ -19,7 +19,9 @@ Conservan su licencia original:
 - Las tipografías: UnifrakturCook, de j. «mach» wust y Peter Wiegel (SIL Open Font
   License 1.1), cuyos contornos se convirtieron a SVG para el sello; Grenze Gotisch
   (The Grenze Gotisch Project Authors) y Newsreader (The Newsreader Project Authors),
-  de Google Fonts, bajo SIL Open Font License 1.1.
+  de Google Fonts, bajo SIL Open Font License 1.1. Los archivos TTF de Grenze Gotisch y
+  Newsreader de assets/og solo se usan para generar la imagen para compartir; sus
+  licencias están en esa misma carpeta (OFL-GrenzeGotisch.txt y OFL-Newsreader.txt).
 
 Créditos de las capturas de public/images/projects:
 - Lente Rosa: © OpenStreetMap contributors (ODbL); © OpenFreeMap, © OpenMapTiles.

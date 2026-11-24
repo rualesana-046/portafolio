@@ -22,4 +22,12 @@ export const siteMetadata: SiteMetadata = {
   appIconRoute: "/icon",
   appIconSizes: [180, 192, 512],
   appleIconSize: 180,
+  shareImage: {
+    alt: {
+      es: "Ana María Ruales, desarrolladora full stack, con un sello con las iniciales AM sobre un fondo verde oscuro.",
+      en: "Ana María Ruales, full stack developer, with a seal bearing the initials AM on a dark green background.",
+    },
+    width: 1200,
+    height: 630,
+  },
 };

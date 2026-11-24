@@ -1,5 +1,11 @@
 import type { Localized } from "@/types/i18n";
 
+export interface ShareImage {
+  readonly alt: Localized;
+  readonly width: number;
+  readonly height: number;
+}
+
 export interface SiteMetadata {
   readonly title: Localized;
   readonly description: Localized;
@@ -16,4 +22,5 @@ export interface SiteMetadata {
   readonly appIconRoute: string;
   readonly appIconSizes: readonly number[];
   readonly appleIconSize: number;
+  readonly shareImage: ShareImage;
 }
